@@ -1,0 +1,24 @@
+{
+  "name": "github-dashboard",
+  "version": "0.0.1",
+  "description": "A dashboard that reads from the Github API",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Lluis Agusti <hi@llu.lu>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "typescript": "^3.8.3"
+  }
+}
