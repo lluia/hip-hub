@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 export default function App({ Component, pageProps }) {
   return (
-    <div style={{ backgroundColor: 'red' }}>
+    <div style={{ backgroundColor: "red" }}>
       <Component {...pageProps} />
     </div>
   );
