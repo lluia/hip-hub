@@ -1,0 +1,38 @@
+{
+  "name": "hip-hub",
+  "version": "0.0.1",
+  "description": "A dashboard that reads from the Github API",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "types": "tsc",
+    "lint": "eslint '{pages,utils}/*.{ts,tsx}'",
+    "format": "prettier -l --write \"**/*.{ts,tsx,md}\""
+  },
+  "author": "Lluis Agusti <hi@llu.lu>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "next": "^9.4.0",
+    "next-auth": "^2.0.0-beta.50",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.3"
+  }
+}
