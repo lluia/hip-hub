@@ -7,7 +7,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn prettier --write ./pages"
+    "types": "tsc",
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "format": "prettier -l --write \"**/*.{ts,tsx,md}\""
   },
   "author": "Lluis Agusti <hi@llu.lu>",
   "license": "MIT",
