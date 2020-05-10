@@ -4,9 +4,11 @@
 
 ### TODOs
 
-- [ ] Linting
-- [ ] Typecheck command
-- [ ] Styled comoponents
+- [x] Linting
+- [x] Typecheck command
+- [ ] Pipeline setup
+- [ ] Netlify deploy
+- [ ] Github login
+- [ ] CSS setup
 - [ ] Unit tests setup
 - [ ] Cypress
-- [ ] Github login
