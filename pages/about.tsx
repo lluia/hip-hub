@@ -1,7 +1,7 @@
 import React from 'react'
 
 function About() {
-  return <div>Welcome to Next.js!</div>
+  return <h1>About Hip Hub...</h1>
 }
 
 export default About
