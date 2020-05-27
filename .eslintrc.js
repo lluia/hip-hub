@@ -27,6 +27,7 @@ module.exports = {
         },
       },
     ],
+    'react/prop-types': 'off',
   },
   parserOptions: {
     ecmaFeatures: {
