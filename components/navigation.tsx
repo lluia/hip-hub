@@ -2,9 +2,9 @@ import * as React from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client'
 
-export default function Navigation() {
+export function Navigation() {
   const [session, loading] = useSession()
-  console.log(session)
+
   return (
     <nav>
       {/*
@@ -15,11 +15,15 @@ export default function Navigation() {
       <noscript>
         <style>{`.js-hidden { opacity: 1 !important; }`}</style>
       </noscript>
-      <p className={!session && loading ? 'js-hidden' : ''}>
+      <div className={!session && loading ? 'js-hidden' : ''}>
         {session && (
           <>
+            <img
+              src={session.user.image}
+              style={{ width: 30, height: 30, borderRadius: '50%' }}
+            />
             <span>
-              Signed in as <strong>{session.user.email}</strong>
+              Hi <strong>{session.user.name}</strong>!
             </span>
             <a href={`/api/auth/signout`}>
               <button>Sign out</button>
@@ -34,7 +38,7 @@ export default function Navigation() {
             </a>
           </>
         )}
-      </p>
+      </div>
       <h4>Navigation</h4>
       <ul>
         <li>

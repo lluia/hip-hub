@@ -1,20 +1,45 @@
-import { NextPage } from 'next'
+import * as React from 'react'
 import { AppProps } from 'next/app'
-import { Provider } from 'next-auth/client'
-import Nav from '../components/navigation'
+import { useSession } from 'next-auth/client'
+import { ApolloProvider } from '@apollo/react-hooks'
+import ApolloClient from 'apollo-boost'
+import { Navigation, Greeting } from '../components'
+import { getGithubToken } from '../utils'
 import './styles.css'
 
-// Using the NextAuth Provider in _app.js is  optional, but improves performance
-// and reduces network calls by using a shared context for useSession()
 export default function App({ Component, pageProps }: AppProps) {
-  // Passing 'session' as a prop to the Provider allows pages that support
-  // server side rendering to work in browsers without JavaScript if they
-  // export 'session' as prop (i.e. from getServerSideProps or getInitialProps)
-  const { session } = pageProps
+  const [session, sessionLoading] = useSession()
+  const [githubToken, setGithubToken] = React.useState()
+  const withSession = session && !sessionLoading
+
+  React.useEffect(() => {
+    if (session) {
+      getGithubToken().then(setGithubToken).catch(console.log)
+    }
+  }, [session])
+
+  const client = new ApolloClient({
+    uri: 'https://api.github.com/graphql',
+    fetchOptions: {
+      headers: {
+        // TODO: https://www.apollographql.com/docs/react/networking/authentication/
+        Authorization: `bearer ${githubToken}`,
+      },
+    },
+  })
+
   return (
-    <Provider session={session}>
-      <Nav />
-      <Component {...pageProps} />
-    </Provider>
+    <>
+      <Navigation />
+      {sessionLoading ? (
+        '...'
+      ) : withSession && githubToken ? (
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      ) : (
+        <Greeting />
+      )}
+    </>
   )
 }
