@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { useSession } from 'next-auth/client'
 import { InMemoryCache, ApolloClient, ApolloProvider } from '@apollo/client'
 import { Navigation, Greeting } from '../components'
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   React.useEffect(() => {
     if (session) {
-      getGithubToken().then(setGithubToken).catch(console.log)
+      getGithubToken().then(setGithubToken).catch(console.error)
     }
   }, [session])
 
@@ -27,7 +28,14 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <>
+    <div className="bg-brand-light min-h-screen">
+      <Head>
+        <title>Hip Hub!</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Navigation />
       {verifyingSession ? (
         '...'
@@ -38,6 +46,6 @@ export default function App({ Component, pageProps }: AppProps) {
       ) : (
         <Greeting />
       )}
-    </>
+    </div>
   )
 }

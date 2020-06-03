@@ -1,12 +1,13 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client'
+import { Button } from './Button'
 
 export function Navigation() {
   const [session, loading] = useSession()
 
   return (
-    <nav>
+    <nav className="p-4">
       {/*
        * The approach used here demonstrates how to avoid a flash of incorrect
        * content on the initial load of pages, while working on pages that
@@ -31,24 +32,15 @@ export function Navigation() {
           </>
         )}
         {!session && (
-          <>
-            <span>Not signed in</span>
-            <a href={`/api/auth/signin`}>
-              <button>Sign in</button>
-            </a>
-          </>
+          <a href={`/api/auth/signin`}>
+            <Button>Sign-in</Button>
+          </a>
         )}
       </div>
-      <h4>Navigation</h4>
       <ul>
         <li>
           <Link href="/">
-            <a>Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/example-page-1">
-            <a>Example Page 1</a>
+            <a className="text-link">Home</a>
           </Link>
         </li>
       </ul>

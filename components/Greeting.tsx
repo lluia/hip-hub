@@ -1,11 +1,10 @@
 import React from 'react'
+import { Heading } from './'
 
 export function Greeting() {
   return (
     <main>
-      <h1>
-        Welcome to <strong>Hip Hub!</strong>
-      </h1>
+      <Heading>Welcome to Hip Hub</Heading>
       <p>Sin-in to keep track of your Github notifications!.</p>
     </main>
   )
