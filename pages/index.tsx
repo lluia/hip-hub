@@ -1,9 +1,5 @@
 import * as React from 'react'
-import axios from 'axios'
-import { useSession } from 'next-auth/client'
-import { useLazyQuery } from '@apollo/react-hooks'
-import { Greeting } from '../components'
-import { gql } from 'apollo-boost'
+import { gql, useLazyQuery } from '@apollo/client'
 
 const GET_REPOS = gql`
   query($count: Int!) {
@@ -12,6 +8,7 @@ const GET_REPOS = gql`
       repositories(last: $count) {
         nodes {
           name
+          url
         }
       }
     }
@@ -29,7 +26,19 @@ export default function Home() {
     })
   }, [getRepos])
 
-  console.log(data)
-
-  return <main>{loading ? 'loading repos....' : 'loaded!'}</main>
+  return (
+    <main>
+      {loading || !data ? (
+        'loading repos....'
+      ) : (
+        <ul>
+          {data.viewer.repositories.nodes.map(({ name, url }) => (
+            <li key={name}>
+              <a href={url}>{name}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </main>
+  )
 }
