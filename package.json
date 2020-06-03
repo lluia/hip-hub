@@ -1,6 +1,6 @@
 {
   "name": "hip-hub",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A dashboard that reads from the Github API",
   "main": "src/index.ts",
   "scripts": {
