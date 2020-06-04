@@ -1,23 +1,19 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useSession } from 'next-auth/client'
+import { Provider as SessionProvider } from 'next-auth/client'
 import { InMemoryCache, ApolloClient, ApolloProvider } from '@apollo/client'
-import { Navigation, Greeting } from '../components'
+import { Navigation } from '../components'
 import { getGithubToken } from '../utils'
 import './styles.css'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [session, verifyingSession] = useSession()
+  const { session } = pageProps
   const [githubToken, setGithubToken] = React.useState()
-  const withSession = !verifyingSession && session
-  const ready = withSession && githubToken
 
   React.useEffect(() => {
-    if (session) {
-      getGithubToken().then(setGithubToken).catch(console.error)
-    }
-  }, [session])
+    getGithubToken().then(setGithubToken).catch(console.error)
+  }, [])
 
   const client = new ApolloClient({
     cache: new InMemoryCache(),
@@ -28,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <div className="bg-brand-light min-h-screen">
+    <div className="min-h-screen max-w-screen-lg m-auto px-4">
       <Head>
         <title>Hip Hub!</title>
         <link
@@ -37,15 +33,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Navigation />
-      {verifyingSession ? (
-        '...'
-      ) : ready ? (
+      <SessionProvider session={session}>
         <ApolloProvider client={client}>
           <Component {...pageProps} />
         </ApolloProvider>
-      ) : (
-        <Greeting />
-      )}
+      </SessionProvider>
     </div>
   )
 }

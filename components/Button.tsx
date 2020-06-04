@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
-interface ButtonProps {
-  children: string
-}
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {}
 
-export const Button = ({ children }: ButtonProps) => {
-  const buttonStyle =
-    'bg-action-gradient text-white py-3 px-6 rounded-lg font-bold text-sm'
-  return <button className={buttonStyle}>{children}</button>
+const buttonStyle =
+  'bg-action-gradient text-white py-2 px-5 rounded font-bold text-sm cursor-pointer'
+
+export const Button = ({ className, ...props }: ButtonProps) => {
+  return <button className={`${buttonStyle} ${className}`} {...props} />
 }
