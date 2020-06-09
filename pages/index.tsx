@@ -1,49 +1,29 @@
 import * as React from 'react'
-import { gql, useLazyQuery } from '@apollo/client'
 import { useSession } from 'next-auth/client'
-import { Heading, Link } from '../components'
-
-const GET_REPOS = gql`
-  query($count: Int!) {
-    viewer {
-      name
-      repositories(last: $count) {
-        nodes {
-          name
-          url
-        }
-      }
-    }
-  }
-`
+import { Heading } from '../components'
+import { useRequest } from '../hooks'
+import { parseNotifications } from '../utils'
 
 export default function Home() {
-  const [getRepos, { loading: reposLoading, data }] = useLazyQuery(GET_REPOS)
   const [session, sessionLoading] = useSession()
+  const { data } = useRequest('/notifications')
+  const notifications = parseNotifications(data)
+  const isLoading = sessionLoading || (session && !data)
 
-  React.useEffect(() => {
-    getRepos({
-      variables: {
-        count: 50,
-      },
-    })
-  }, [getRepos])
-
-  return sessionLoading ? (
+  return isLoading ? (
     '...'
-  ) : session ? (
+  ) : notifications ? (
     <main className="mt-10">
-      {reposLoading || !data ? (
-        'loading repos....'
-      ) : (
-        <ul>
-          {data.viewer.repositories.nodes.map(({ name, url }) => (
-            <li key={name}>
-              <Link href={url}>{name}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {notifications.map(({ title, type }) => (
+          <li className="bg-white p-4 m-6 relative" key={title}>
+            <h4>{title}</h4>
+            <span className="absolute right-0 top-0 text-xs bg-brand p-1">
+              {type}
+            </span>
+          </li>
+        ))}
+      </ul>
     </main>
   ) : (
     <>

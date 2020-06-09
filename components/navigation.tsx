@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/client'
-import { Button, Logo } from './'
+import { Button, Logo } from '.'
 import { useRouter } from 'next/dist/client/router'
 
 export function Navigation() {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Logo() {
+export const Logo = React.forwardRef((props, ref) => {
   return (
     <svg
       version="1.1"
@@ -9,6 +9,8 @@ export function Logo() {
       y="0px"
       viewBox="0 0 64 64"
       className="w-10"
+      ref={ref}
+      {...props}
     >
       <g>
         <path
@@ -26,4 +28,6 @@ export function Logo() {
       </g>
     </svg>
   )
-}
+})
+
+Logo.displayName = 'Logo'

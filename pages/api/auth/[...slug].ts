@@ -13,7 +13,6 @@ const options = {
     }),
   ],
   database: process.env.DATABASE_URL,
-  jwt: true,
 }
 
 export default function auth(req: NextApiRequest, res: NextApiResponse) {

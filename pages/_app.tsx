@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { SWRConfig } from 'swr'
 import { Provider as SessionProvider } from 'next-auth/client'
-import { InMemoryCache, ApolloClient, ApolloProvider } from '@apollo/client'
+import axios from 'axios'
 import { Navigation } from '../components'
 import { getGithubToken } from '../utils'
+import { TokenContext } from '../context'
 import './styles.css'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -15,12 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
     getGithubToken().then(setGithubToken).catch(console.error)
   }, [])
 
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    uri: 'https://api.github.com/graphql',
-    headers: {
-      authorization: `bearer ${githubToken}`,
-    },
+  const client = axios.create({
+    baseURL: 'https://api.github.com/',
+    timeout: 1000,
+    headers: { Authorization: `token ${githubToken}` },
   })
 
   return (
@@ -34,9 +34,15 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Navigation />
       <SessionProvider session={session}>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
+        <TokenContext.Provider value={githubToken}>
+          <SWRConfig
+            value={{
+              fetcher: client,
+            }}
+          >
+            <Component {...pageProps} />
+          </SWRConfig>
+        </TokenContext.Provider>
       </SessionProvider>
     </div>
   )
