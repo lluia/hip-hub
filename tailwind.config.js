@@ -28,6 +28,9 @@ module.exports = {
       warning: '#FBC02D',
       ['warning-dark']: '#F9A825',
       ['warning-light']: '#FFE082',
+      ['aux-purple']: '#AA00FF',
+      ['aux-green']: '#00C853',
+      ['aux-blue']: '#0091EA',
     },
     spacing: {
       px: '1px',
@@ -49,6 +52,11 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+    },
+    inset: {
+      '0': 0,
+      auto: 'auto',
+      '5': '5px',
     },
     opacity: {
       '0': '0',
@@ -85,6 +93,7 @@ module.exports = {
       ],
     },
     fontSize: {
+      xxs: '0.65rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',

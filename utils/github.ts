@@ -1,5 +1,14 @@
 import axios from 'axios'
-import type { GithubNotificationSubject, GithubResponse } from '../types/github'
+import type {
+  GithubNotificationSubject,
+  GithubResponse,
+  GithubNotificationRepository,
+} from '../types/github'
+
+interface ParsedNotification {
+  subject: GithubNotificationSubject
+  repository: GithubNotificationRepository
+}
 
 async function getGithubToken() {
   const {
@@ -14,13 +23,10 @@ function parseNotifications(data: GithubResponse | null) {
   if (!data) return null
   const { data: notifications } = data
 
-  return Object.keys(notifications).reduce<GithubNotificationSubject[]>(
-    (acc, key) => {
-      const { subject } = notifications[key]
-      return [...acc, subject]
-    },
-    []
-  )
+  return Object.keys(notifications).reduce<ParsedNotification[]>((acc, key) => {
+    const { subject, repository } = notifications[key]
+    return [...acc, { subject, repository }]
+  }, [])
 }
 
 export { getGithubToken, parseNotifications }

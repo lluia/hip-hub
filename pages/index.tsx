@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useSession } from 'next-auth/client'
-import { Heading } from '../components'
+import { Heading, Card, Label } from '../components'
 import { useRequest } from '../hooks'
 import { parseNotifications } from '../utils'
 
@@ -15,12 +15,19 @@ export default function Home() {
   ) : notifications ? (
     <main className="mt-10">
       <ul>
-        {notifications.map(({ title, type }) => (
-          <li className="bg-white p-4 m-6 relative" key={title}>
-            <h4>{title}</h4>
-            <span className="absolute right-0 top-0 text-xs bg-brand p-1">
-              {type}
-            </span>
+        {notifications.map(({ subject }) => (
+          <li key={subject.title}>
+            <Card goTo={subject.url}>
+              <Card.Title as="h4" size="h6">
+                {subject.title}
+              </Card.Title>
+              <Card.Content>
+                <Label
+                  variant={subject.type}
+                  className="absolute top-5 right-5"
+                />
+              </Card.Content>
+            </Card>
           </li>
         ))}
       </ul>
