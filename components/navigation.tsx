@@ -19,7 +19,7 @@ export function Navigation() {
       } flex justify-between align-center py-3`}
     >
       <Link href="/">
-        <Logo />
+        <Logo className="w-10" />
       </Link>
       <div className="flex justify-between items-center">
         {session ? (

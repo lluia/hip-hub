@@ -10,8 +10,6 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      black: '#263238',
-      white: '#FAFAFA',
       brand: '#e67e22',
       ['brand-dark']: '#d35400',
       ['brand-light']: '#f1f5fe',
@@ -31,6 +29,12 @@ module.exports = {
       ['aux-purple']: '#AA00FF',
       ['aux-green']: '#00C853',
       ['aux-blue']: '#0091EA',
+      black: '#263238',
+      dark: '#757575',
+      grey: '#BDBDBD',
+      ['blue-grey']: '#607D8B',
+      ['near-white']: '#EEEEEE',
+      white: '#FAFAFA',
     },
     spacing: {
       px: '1px',

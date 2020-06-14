@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { useSession } from 'next-auth/client'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCube } from '@fortawesome/free-solid-svg-icons'
 import { Heading, Card, Label } from '../components'
 import { useRequest } from '../hooks'
 import { parseNotifications } from '../utils'
@@ -11,27 +13,42 @@ export default function Home() {
   const isLoading = sessionLoading || (session && !data)
 
   return isLoading ? (
-    '...'
+    <i className="lni lni-spiner-solid" />
   ) : notifications ? (
-    <main className="mt-10">
-      <ul>
-        {notifications.map(({ subject }) => (
-          <li key={subject.title}>
-            <Card goTo={subject.url}>
-              <Card.Title as="h4" size="h6">
-                {subject.title}
-              </Card.Title>
-              <Card.Content>
-                <Label
-                  variant={subject.type}
-                  className="absolute top-5 right-5"
-                />
-              </Card.Content>
-            </Card>
-          </li>
-        ))}
-      </ul>
-    </main>
+    !notifications.length ? (
+      <p>You don&apos;t have any new notifications!</p>
+    ) : (
+      <main className="mt-10">
+        <ul>
+          {notifications.map(({ subject, repository }) => (
+            <li key={subject.title}>
+              <Card goTo={subject.url}>
+                <Card.Title
+                  as="h4"
+                  size="h6"
+                  className="flex items-center justify-between tracking-wide"
+                >
+                  {subject.title}
+                  <Label variant={subject.type} />
+                </Card.Title>
+                <Card.Content>
+                  <div className="text-xs">
+                    <FontAwesomeIcon
+                      icon={faCube}
+                      size="lg"
+                      className="mr-2 inline-block"
+                    />
+                    <span className="text-blue-grey tracking-wider">
+                      {repository.full_name}
+                    </span>
+                  </div>
+                </Card.Content>
+              </Card>
+            </li>
+          ))}
+        </ul>
+      </main>
+    )
   ) : (
     <>
       <img

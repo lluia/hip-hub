@@ -11,7 +11,7 @@ Card.Content = CardContent
 export function Card({ className, goTo, ...props }: DivProps) {
   const content = (
     <div
-      className={`bg-white p-4 m-6 relative shadow-sm ${className}`}
+      className={`bg-white p-4 m-6 relative shadow ${className}`}
       {...props}
     />
   )
