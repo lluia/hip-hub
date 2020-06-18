@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { useSession } from 'next-auth/client'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCube } from '@fortawesome/free-solid-svg-icons'
-import { Heading, Card, Label } from '../components'
+import { Heading, Card, Variant, Badge, RepoName } from '../components'
 import { useRequest } from '../hooks'
 import { parseNotifications } from '../utils'
 
@@ -20,32 +18,32 @@ export default function Home() {
     ) : (
       <main className="mt-10">
         <ul>
-          {notifications.map(({ subject, repository }) => (
-            <li key={subject.title}>
-              <Card goTo={subject.url}>
-                <Card.Title
-                  as="h4"
-                  size="h6"
-                  className="flex items-center justify-between tracking-wide"
-                >
-                  {subject.title}
-                  <Label variant={subject.type} />
-                </Card.Title>
-                <Card.Content>
-                  <div className="text-xs">
-                    <FontAwesomeIcon
-                      icon={faCube}
-                      size="lg"
-                      className="mr-2 inline-block"
-                    />
-                    <span className="text-blue-grey tracking-wider">
-                      {repository.full_name}
-                    </span>
-                  </div>
-                </Card.Content>
-              </Card>
-            </li>
-          ))}
+          {notifications.map(
+            ({
+              subject: { title, url, type },
+              repository: { name, owner },
+            }) => (
+              <li key={title}>
+                <Card goTo={url}>
+                  <Card.Title
+                    as="h4"
+                    size="h6"
+                    className="flex items-baseline tracking-wide"
+                  >
+                    {type === 'Release' ? (
+                      <Badge variant="warning">{title}</Badge>
+                    ) : (
+                      title
+                    )}
+                    <Variant className="ml-2">{type}</Variant>
+                  </Card.Title>
+                  <Card.Content>
+                    <RepoName owner={owner}>{name}</RepoName>
+                  </Card.Content>
+                </Card>
+              </li>
+            )
+          )}
         </ul>
       </main>
     )

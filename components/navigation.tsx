@@ -25,12 +25,9 @@ export function Navigation() {
         {session ? (
           <>
             <div className="flex items-center mr-8">
-              <img
-                src={session.user.image}
-                style={{ width: 30, height: 30, borderRadius: '50%' }}
-              />
-              <span className="inline-block ml-5">
-                Hi <strong>{session.user.name}</strong>!
+              <img src={session.user.image} className="rounded-full w-6" />
+              <span className="inline-block ml-3">
+                Hi <strong>{session.user.name}</strong>
               </span>
             </div>
             <Button onClick={sessionCallback}>Sign out</Button>

@@ -16,10 +16,16 @@ export interface GithubNotification {
 export interface GithubNotificationSubject {
   title: string
   url: string
-  type: string
+  type: 'PullRequest' | 'Issue' | 'Release'
 }
 
 export interface GithubNotificationRepository {
   id: number
-  full_name: string
+  name: string
+  owner: GithubNotificationRepositoryOwner
+}
+
+export interface GithubNotificationRepositoryOwner {
+  type: 'Organization'
+  avatar_url: string
 }

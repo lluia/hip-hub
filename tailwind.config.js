@@ -9,6 +9,9 @@ module.exports = {
       xl: '1280px',
     },
     colors: {
+      /**
+       * Main
+       */
       transparent: 'transparent',
       brand: '#e67e22',
       ['brand-dark']: '#d35400',
@@ -17,6 +20,9 @@ module.exports = {
       ['action-light']: '#793bfc',
       link: '#3498db',
       ['link-light']: '#FAFAFA',
+      /**
+       * Semantic
+       */
       success: '#4CAF50',
       ['success-dark']: '#388E3C',
       ['success-light']: '#A5D6A7',
@@ -26,15 +32,22 @@ module.exports = {
       warning: '#FBC02D',
       ['warning-dark']: '#F9A825',
       ['warning-light']: '#FFE082',
-      ['aux-purple']: '#AA00FF',
-      ['aux-green']: '#00C853',
-      ['aux-blue']: '#0091EA',
+      /**
+       * Gray scale
+       */
       black: '#263238',
       dark: '#757575',
       grey: '#BDBDBD',
       ['blue-grey']: '#607D8B',
       ['near-white']: '#EEEEEE',
       white: '#FAFAFA',
+      /**
+       * Other
+       */
+      ['aux-purple']: '#AA00FF',
+      ['aux-green']: '#00C853',
+      ['aux-green-light']: '#64DD17',
+      ['aux-blue']: '#0091EA',
     },
     spacing: {
       px: '1px',

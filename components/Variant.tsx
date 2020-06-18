@@ -2,16 +2,17 @@ import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCodeBranch,
-  faBolt,
-  faCommentAlt,
+  faCheck,
+  faFlag,
 } from '@fortawesome/free-solid-svg-icons'
+import { GithubNotificationSubject } from '../types/github'
 
-interface LabelProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant: string
+interface VariantProps extends React.HTMLAttributes<HTMLSpanElement> {
+  children: GithubNotificationSubject['type']
 }
 
-export function Label({ className, variant, ...props }: LabelProps) {
-  const actualVariant = mapVariant(variant)
+export function Variant({ className, children, ...props }: VariantProps) {
+  const actualVariant = mapVariant(children)
 
   if (!actualVariant) return null
 
@@ -19,11 +20,11 @@ export function Label({ className, variant, ...props }: LabelProps) {
 
   return (
     <span
-      className={`inline-flex items-center text-xs ${color} ${className}`}
+      className={`inline-flex items-center text-xxs py-1 px-2 rounded-full ${color} ${className}`}
       {...props}
     >
-      <span className="inline-block mr-2">{text}</span>
       {icon}
+      <span className="inline-block ml-1">{text}</span>
     </span>
   )
 }
@@ -40,13 +41,13 @@ function mapVariant(variant: string) {
       return {
         color: 'text-aux-blue',
         text: 'Story',
-        icon: <FontAwesomeIcon icon={faCommentAlt} />,
+        icon: <FontAwesomeIcon icon={faFlag} />,
       }
     case 'Release':
       return {
         color: 'text-aux-green',
-        text: 'Release',
-        icon: <FontAwesomeIcon icon={faBolt} />,
+        text: 'Released',
+        icon: <FontAwesomeIcon icon={faCheck} />,
       }
     default:
       return null
