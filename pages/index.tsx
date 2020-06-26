@@ -59,7 +59,7 @@ export default function Home() {
         Welcome to Hip Hub
       </Heading>
       <p className="text-center text-lg">
-        Sign-in to keep track of your Github notifications!.
+        Sign-in to keep track of your Github notifications!
       </p>
     </>
   )
