@@ -4,7 +4,7 @@ interface LogoProps extends React.HTMLAttributes<SVGSVGElement> {
   className?: string
 }
 
-export const Logo = React.forwardRef<SVGSVGElement>((props: LogoProps, ref) => {
+export const Logo = React.forwardRef<SVGSVGElement, LogoProps>((props, ref) => {
   return (
     <svg x="0px" y="0px" viewBox="0 0 512 512" {...props} ref={ref}>
       <g>
