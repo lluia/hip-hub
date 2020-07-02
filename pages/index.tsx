@@ -1,6 +1,10 @@
 import * as React from 'react'
 import { useSession } from 'next-auth/client'
-import { Heading, Card, Variant, Badge, RepoName } from '../components'
+import { Heading } from '../components/Heading'
+import { Card } from '../components/Card'
+import { Variant } from '../components/Variant'
+import { Badge } from '../components/Badge'
+import { RepoName } from '../components/RepoName'
 import { useRequest } from '../hooks'
 import { parseNotifications } from '../utils'
 

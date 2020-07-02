@@ -42,7 +42,7 @@
     "eslint-plugin-react-hooks": "^4.0.4",
     "prettier": "^2.0.5",
     "typeorm": "^0.2.25",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.6"
   },
   "browserslist": [
     ">0.3%",
