@@ -1,4 +1,3 @@
-import axios from 'axios'
 import type {
   GithubNotificationSubject,
   GithubResponse,
@@ -8,15 +7,6 @@ import type {
 interface ParsedNotification {
   subject: GithubNotificationSubject
   repository: GithubNotificationRepository
-}
-
-async function getGithubToken() {
-  const {
-    data: {
-      account: { accessToken },
-    },
-  } = await axios.get('/api/github/get-token')
-  return accessToken
 }
 
 function parseNotifications(data: GithubResponse | null) {
@@ -29,4 +19,4 @@ function parseNotifications(data: GithubResponse | null) {
   }, [])
 }
 
-export { getGithubToken, parseNotifications }
+export { parseNotifications }

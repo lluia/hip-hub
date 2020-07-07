@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Heading } from './'
+import { Heading } from './Heading'
 
 interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
   goTo?: string

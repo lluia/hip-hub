@@ -1,27 +1,41 @@
 import * as React from 'react'
-import { AppProps } from 'next/app'
 import Head from 'next/head'
+import Router from 'next/router'
 import { SWRConfig } from 'swr'
-import { Provider as SessionProvider } from 'next-auth/client'
+import type { AppProps } from 'next/app'
 import axios from 'axios'
-import { Navigation } from '../components/Navigation'
-import { getGithubToken } from '../utils'
-import { TokenContext } from '../context'
+import { Navigation } from '../components'
 import './styles.css'
 
+interface User {
+  name: string
+  avatar: string
+}
+
 export default function App({ Component, pageProps }: AppProps) {
-  const { session } = pageProps
-  const [githubToken, setGithubToken] = React.useState()
+  const [user, setUser] = React.useState<User | null>(null)
+  const client = axios.create({
+    baseURL: '/api',
+    timeout: 1000,
+  })
 
   React.useEffect(() => {
-    getGithubToken().then(setGithubToken).catch(console.error)
-  }, [])
+    async function fetchUser() {
+      try {
+        const {
+          data: { avatar_url: avatar, name },
+        } = await axios.get('/api/user')
+        setUser({
+          avatar,
+          name,
+        })
+      } catch (e) {
+        Router.push('/sign-in')
+      }
+    }
 
-  const client = axios.create({
-    baseURL: 'https://api.github.com/',
-    timeout: 1000,
-    headers: { Authorization: `token ${githubToken}` },
-  })
+    fetchUser()
+  }, [])
 
   return (
     <div className="min-h-screen max-w-screen-lg m-auto px-4">
@@ -32,18 +46,14 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Navigation />
-      <SessionProvider session={session}>
-        <TokenContext.Provider value={githubToken}>
-          <SWRConfig
-            value={{
-              fetcher: client,
-            }}
-          >
-            <Component {...pageProps} />
-          </SWRConfig>
-        </TokenContext.Provider>
-      </SessionProvider>
+      <Navigation user={user} />
+      <SWRConfig
+        value={{
+          fetcher: client,
+        }}
+      >
+        {user ? <Component {...pageProps} /> : 'loading app...'}
+      </SWRConfig>
     </div>
   )
 }
