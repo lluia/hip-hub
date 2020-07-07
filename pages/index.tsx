@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useSession } from 'next-auth/client'
 import { Heading } from '../components/Heading'
 import { Card } from '../components/Card'
 import { Variant } from '../components/Variant'
@@ -9,10 +8,9 @@ import { useRequest } from '../hooks'
 import { parseNotifications } from '../utils'
 
 export default function Home() {
-  const [session, sessionLoading] = useSession()
   const { data } = useRequest('/notifications')
   const notifications = parseNotifications(data)
-  const isLoading = sessionLoading || (session && !data)
+  const isLoading = false
 
   return isLoading ? (
     <i className="lni lni-spiner-solid" />

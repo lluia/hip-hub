@@ -1,20 +1,24 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { SWRConfig } from 'swr'
-import { Provider as SessionProvider } from 'next-auth/client'
 import axios from 'axios'
-import { Navigation } from '../components/Navigation'
+import { Navigation, Link } from '../components'
 import { getGithubToken } from '../utils'
-import { TokenContext } from '../context'
 import './styles.css'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const { session } = pageProps
+export default function App() {
   const [githubToken, setGithubToken] = React.useState()
 
   React.useEffect(() => {
-    getGithubToken().then(setGithubToken).catch(console.error)
+    async function fetchToken() {
+      try {
+        const token = await getGithubToken()
+        setGithubToken(token)
+      } catch (e) {
+        return undefined
+      }
+    }
+    fetchToken()
   }, [])
 
   const client = axios.create({
@@ -33,7 +37,8 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Navigation />
-      <SessionProvider session={session}>
+      <Link href="/api/auth/sign-in">Sign-in through GithHub</Link>
+      {/* <SessionProvider session={session}>
         <TokenContext.Provider value={githubToken}>
           <SWRConfig
             value={{
@@ -43,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </SWRConfig>
         </TokenContext.Provider>
-      </SessionProvider>
+      </SessionProvider> */}
     </div>
   )
 }

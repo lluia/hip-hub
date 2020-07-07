@@ -11,12 +11,16 @@ interface ParsedNotification {
 }
 
 async function getGithubToken() {
-  const {
-    data: {
-      account: { accessToken },
-    },
-  } = await axios.get('/api/github/get-token')
-  return accessToken
+  try {
+    const {
+      data: {
+        account: { accessToken },
+      },
+    } = await axios.get('/api/github/get-token')
+    return accessToken
+  } catch (e) {
+    return undefined
+  }
 }
 
 function parseNotifications(data: GithubResponse | null) {
