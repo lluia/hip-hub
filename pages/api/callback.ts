@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as jwt from 'jsonwebtoken'
 import axios from 'axios'
+import cookie from 'cookie'
 
 export default async function callback(
   req: NextApiRequest,
@@ -45,9 +46,17 @@ export default async function callback(
     )
 
     res.statusCode = 302
-    res.setHeader('Set-Cookie', `hhToken=${signedJWT}; HttpOnly`)
+    res.setHeader(
+      'Set-Cookie',
+      cookie.serialize('hhSessionToken', signedJWT, {
+        httpOnly: true,
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24 * 7, // Sessions expire after 1 week of being idle
+      })
+    )
+
     res.setHeader('Location', `/`)
-    res.end('Love ya 💚')
+    res.end()
   } catch (e) {
     res.statusCode = 500
     res.end({ error: `[HIP HUB]: ${e.message}` })

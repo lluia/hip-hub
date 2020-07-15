@@ -1,14 +1,16 @@
 import * as React from 'react'
 import useSWR from 'swr'
-import { Card, Variant, Badge, RepoName } from '../components'
+import { Card, Variant, Badge, RepoName, Loading } from '../components'
 import { parseNotifications } from '../utils'
 
 export default function Home() {
-  const { data } = useSWR('/notifications')
+  const { data, error } = useSWR('/notifications')
   const notifications = parseNotifications(data)
 
   return !notifications ? (
-    'loading notifications...'
+    <Loading root />
+  ) : error ? (
+    <div>Ups we had an issue loading your notifications...</div>
   ) : notifications.length ? (
     <main className="mt-10">
       <ul>

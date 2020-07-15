@@ -1,31 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
-import * as jwt from 'jsonwebtoken'
+import { buildAutRoute, client } from '../../utils'
 
-export default async function getUser(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { hhToken } = req.cookies
+const route = buildAutRoute((token: string) =>
+  client.get('/user', {
+    headers: {
+      Authorization: `token ${token}`,
+    },
+  })
+)
 
-  res.setHeader('Content-Type', 'application/json')
-
-  if (!hhToken) {
-    res.statusCode = 401
-    res.end(JSON.stringify({ error: 'Please authenticate on Github' }))
-  }
-
-  try {
-    const result = jwt.verify(hhToken, process.env.JWT_SECRET!)
-    const response = await axios.get('https://api.github.com/user', {
-      headers: {
-        Authorization: `token ${result.token}`,
-      },
-    })
-    res.statusCode = 200
-    res.end(JSON.stringify(response.data))
-  } catch (e) {
-    res.statusCode = 500
-    res.end(JSON.stringify({ error: 'ups' }))
-  }
-}
+export default route

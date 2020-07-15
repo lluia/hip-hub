@@ -2,6 +2,8 @@ import * as React from 'react'
 import Link from 'next/link'
 import { Logo, Button } from '.'
 
+export const size = '64px'
+
 export function Navigation({ user }) {
   return (
     <nav className="flex justify-between align-center py-3">
@@ -17,11 +19,13 @@ export function Navigation({ user }) {
                 Hi <strong>{user.name}</strong>
               </span>
             </div>
-            <Button onClick={() => undefined}>Sign out</Button>
+            <Link href="/api/sign-out">
+              <Button>Sign-out</Button>
+            </Link>
           </>
         ) : (
           <Link href="/api/sign-in">
-            <a className="text-action">Sign-in</a>
+            <Button>Sign-in</Button>
           </Link>
         )}
       </div>

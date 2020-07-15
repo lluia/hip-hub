@@ -156,6 +156,14 @@ module.exports = {
       transformOrigin: false,
       transitionTimingFunction: false,
     },
+    extend: {
+      inset: {
+        '1/2': '50%',
+      },
+      minHeight: {
+        inherit: 'inherit',
+      },
+    },
   },
   plugins: [
     plugin(({ addUtilities }) => {

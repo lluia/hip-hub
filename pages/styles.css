@@ -5,3 +5,7 @@
 body {
   @apply bg-white;
 }
+
+.navigation-gap {
+  margin-top: -64px;
+}

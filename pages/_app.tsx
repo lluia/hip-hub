@@ -1,41 +1,21 @@
 import * as React from 'react'
 import Head from 'next/head'
-import Router from 'next/router'
 import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
 import axios from 'axios'
-import { Navigation } from '../components'
-import './styles.css'
+import { Navigation, Loading } from '../components'
+import { useSession } from '../hooks'
 
-interface User {
-  name: string
-  avatar: string
-}
+import './styles.css'
+import 'spinkit/spinkit.min.css'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [user, setUser] = React.useState<User | null>(null)
   const client = axios.create({
     baseURL: '/api',
     timeout: 1000,
   })
 
-  React.useEffect(() => {
-    async function fetchUser() {
-      try {
-        const {
-          data: { avatar_url: avatar, name },
-        } = await axios.get('/api/user')
-        setUser({
-          avatar,
-          name,
-        })
-      } catch (e) {
-        Router.push('/sign-in')
-      }
-    }
-
-    fetchUser()
-  }, [])
+  const session = useSession(client)
 
   return (
     <div className="min-h-screen max-w-screen-lg m-auto px-4">
@@ -46,13 +26,15 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Navigation user={user} />
+      <Navigation user={session.user} />
       <SWRConfig
         value={{
           fetcher: client,
         }}
       >
-        {user ? <Component {...pageProps} /> : 'loading app...'}
+        <div className="pt-8">
+          {!session.verified ? <Loading root /> : <Component {...pageProps} />}
+        </div>
       </SWRConfig>
     </div>
   )
