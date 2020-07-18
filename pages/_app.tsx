@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
 import axios from 'axios'
-import { Navigation, Loading } from '../components'
+import { Loading } from '../components'
 import { useSession } from '../hooks'
 
 import './styles.css'
@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Navigation user={session.user} />
+      {/* <Navigation user={session.user} /> */}
       <SWRConfig
         value={{
           fetcher: client,
