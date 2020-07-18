@@ -2,18 +2,18 @@ import * as React from 'react'
 import Link from 'next/link'
 import { Logo, Button } from '.'
 
-interface NavigationUser {
+interface NavbarUser {
   avatar: string
   name: string
 }
 
-interface NavigationProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: NavigationUser | null
+interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
+  user: NavbarUser | null
 }
 
 export const size = '64px'
 
-export function Navigation({ user }: NavigationProps) {
+export function Navbar({ user }: NavbarProps) {
   return (
     <nav className="flex justify-between align-center py-3">
       <Link href="/">
