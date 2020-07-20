@@ -24,11 +24,7 @@ export function RepoName({
       {isOrg ? (
         <img src={avatar_url} className="rounded-full w-4 inline-block mr-2" />
       ) : (
-        <FontAwesomeIcon
-          icon={faCube}
-          size="sm"
-          className="mr-2 inline-block"
-        />
+        <FontAwesomeIcon icon={faCube} className="mr-2 inline-block w-4" />
       )}
       {children}
     </span>

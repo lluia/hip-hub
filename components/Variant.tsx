@@ -4,6 +4,7 @@ import {
   faCodeBranch,
   faCheck,
   faFlag,
+  faBahai,
 } from '@fortawesome/free-solid-svg-icons'
 import { GithubNotificationSubject } from '../types/github'
 
@@ -48,6 +49,12 @@ function mapVariant(variant: string) {
         color: 'text-aux-green',
         text: 'Released',
         icon: <FontAwesomeIcon icon={faCheck} className="w-2" />,
+      }
+    case 'Commit':
+      return {
+        color: 'text-dark',
+        text: 'Commit',
+        icon: <FontAwesomeIcon icon={faBahai} className="w-2" />,
       }
     default:
       return null
