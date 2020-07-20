@@ -1,12 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { verify } from 'jsonwebtoken'
-import axios from 'axios'
 import type { JWTPayload } from '../types/'
-import type { AxiosResponse } from 'axios'
 
-export function buildAutRoute(
-  fetcher: (token: string) => Promise<AxiosResponse<unknown>>
-) {
+export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
   return async function endpoint(req: NextApiRequest, res: NextApiResponse) {
     const { hhSessionToken } = req.cookies
 
@@ -23,9 +19,10 @@ export function buildAutRoute(
       ) as JWTPayload
 
       const response = await fetcher(session.token)
+      const data = await response.json()
 
       res.statusCode = 200
-      res.end(JSON.stringify(response.data))
+      res.end(JSON.stringify(data))
     } catch (e) {
       res.statusCode = 500
       res.end(JSON.stringify({ error: e.message }))
@@ -33,7 +30,4 @@ export function buildAutRoute(
   }
 }
 
-export const client = axios.create({
-  baseURL: 'https://api.github.com',
-  timeout: 1000,
-})
+export const apiBase = 'https://api.github.com'

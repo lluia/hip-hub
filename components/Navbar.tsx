@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Logo, Button } from '.'
 
 interface NavbarUser {
-  avatar: string
+  avatar_url: string
   name: string
 }
 
@@ -23,7 +23,7 @@ export function Navbar({ user }: NavbarProps) {
         {user ? (
           <>
             <div className="flex items-center mr-8">
-              <img src={user.avatar} className="rounded-full w-6" />
+              <img src={user.avatar_url} className="rounded-full w-6" />
               <span className="inline-block ml-3">
                 Hi <strong>{user.name}</strong>
               </span>

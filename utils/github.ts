@@ -1,6 +1,6 @@
 import type {
   GithubNotificationSubject,
-  GithubResponse,
+  GithubNotifications,
   GithubNotificationRepository,
 } from '../types/github'
 
@@ -9,9 +9,8 @@ interface ParsedNotification {
   repository: GithubNotificationRepository
 }
 
-function parseNotifications(data: GithubResponse | null) {
-  if (!data) return null
-  const { data: notifications } = data
+function parseNotifications(notifications: GithubNotifications | null) {
+  if (!notifications) return null
 
   return Object.keys(notifications).reduce<ParsedNotification[]>((acc, key) => {
     const { subject, repository } = notifications[key]

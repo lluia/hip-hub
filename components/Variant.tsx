@@ -35,19 +35,19 @@ function mapVariant(variant: string) {
       return {
         color: 'text-aux-purple',
         text: 'Pull Request',
-        icon: <FontAwesomeIcon icon={faCodeBranch} />,
+        icon: <FontAwesomeIcon icon={faCodeBranch} className="w-2" />,
       }
     case 'Issue':
       return {
         color: 'text-aux-blue',
         text: 'Story',
-        icon: <FontAwesomeIcon icon={faFlag} />,
+        icon: <FontAwesomeIcon icon={faFlag} className="w-2" />,
       }
     case 'Release':
       return {
         color: 'text-aux-green',
         text: 'Released',
-        icon: <FontAwesomeIcon icon={faCheck} />,
+        icon: <FontAwesomeIcon icon={faCheck} className="w-2" />,
       }
     default:
       return null

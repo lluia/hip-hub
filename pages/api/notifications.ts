@@ -1,7 +1,7 @@
-import { buildAutRoute, client } from '../../utils'
+import { buildAutRoute, apiBase } from '../../utils'
 
 const route = buildAutRoute((token: string) =>
-  client.get('/notifications', {
+  fetch(`${apiBase}/notifications`, {
     headers: {
       Authorization: `token ${token}`,
     },

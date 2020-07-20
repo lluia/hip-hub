@@ -1,7 +1,3 @@
-export interface GithubResponse {
-  data: GithubNotifications
-}
-
 export interface GithubNotifications {
   [key: string]: GithubNotification
 }

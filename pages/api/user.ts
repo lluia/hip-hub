@@ -1,7 +1,7 @@
-import { buildAutRoute, client } from '../../utils'
+import { buildAutRoute, apiBase } from '../../utils'
 
 const route = buildAutRoute((token: string) =>
-  client.get('/user', {
+  fetch(`${apiBase}/user`, {
     headers: {
       Authorization: `token ${token}`,
     },
