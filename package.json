@@ -23,7 +23,6 @@
     "next": "^9.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "spinkit": "^2.0.1",
     "sqlite3": "^4.2.0",
     "swr": "^0.3.0",
     "tailwindcss": "^1.6.0"
@@ -44,7 +43,6 @@
     "eslint-plugin-react-hooks": "^4.0.4",
     "jsonwebtoken": "^8.5.1",
     "prettier": "^2.0.5",
-    "typeorm": "^0.2.25",
     "typescript": "^3.9.6"
   },
   "browserslist": [

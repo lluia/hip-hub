@@ -8,11 +8,11 @@ export default function Home() {
   const notifications = parseNotifications(data)
 
   return !notifications ? (
-    <Loading root />
+    <Loading />
   ) : error ? (
     <div>Ups we had an issue loading your notifications...</div>
   ) : notifications.length ? (
-    <main className="mt-10">
+    <main className="mt-10 pt-8">
       <ul>
         {notifications.map(
           ({ subject: { title, url, type }, repository: { name, owner } }) => (

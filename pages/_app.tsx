@@ -1,12 +1,17 @@
 import * as React from 'react'
 import Head from 'next/head'
 import useSWR, { SWRConfig } from 'swr'
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { useRouter } from 'next/dist/client/router'
 import { Loading, Navbar } from '../components'
 import type { AppProps } from 'next/app'
-
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import './styles.css'
-import 'spinkit/spinkit.min.css'
+
+/**
+ * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+ */
+config.autoAddCss = false
 
 const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
   fetch(input, init).then((res) => res.json())
@@ -31,15 +36,13 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Navbar user={user} loading={isLoading} />
-      <div className="pt-8">
-        {isLoading ? (
-          <Loading root />
-        ) : (
-          <SWRConfig value={{ fetcher }}>
-            {isValidating ? <Loading root /> : <Component {...pageProps} />}
-          </SWRConfig>
-        )}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <SWRConfig value={{ fetcher }}>
+          {isValidating ? <Loading /> : <Component {...pageProps} />}
+        </SWRConfig>
+      )}
     </div>
   )
 }

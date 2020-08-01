@@ -1,22 +1,11 @@
 import * as React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-interface LoadingProps {
-  root?: boolean
-}
-
-export function Loading({ root = false }: LoadingProps) {
+export function Loading() {
   return (
-    <div
-      className={`spinner absolute left-1/2  -translate-x-1/2 ${
-        root ? 'pt-32' : ' top-1/2 -translate-y-1/2'
-      }`}
-    >
-      <div className="sk-wander">
-        <div className="sk-wander-cube"></div>
-        <div className="sk-wander-cube"></div>
-        <div className="sk-wander-cube"></div>
-        <div className="sk-wander-cube"></div>
-      </div>
+    <div className="spinner absolute top-0 left-0 w-full h-full flex items-center justify-center">
+      <FontAwesomeIcon icon={faSpinner} size="2x" spin pulse />
     </div>
   )
 }
