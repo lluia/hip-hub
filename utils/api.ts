@@ -7,9 +7,7 @@ export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
     const { hhSessionToken } = req.cookies
 
     if (!hhSessionToken) {
-      res.statusCode = 401
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify({ error: 'Please authenticate on Github' }))
+      throw new Error('You need to authenticate with Github!')
     }
 
     try {
@@ -22,10 +20,10 @@ export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
       const data = await response.json()
 
       res.statusCode = 200
-      res.end(JSON.stringify(data))
+      res.send(JSON.stringify(data))
     } catch (e) {
       res.statusCode = 500
-      res.end(JSON.stringify({ error: e.message }))
+      res.send(JSON.stringify({ error: e.message }))
     }
   }
 }

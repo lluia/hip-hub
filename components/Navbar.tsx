@@ -9,18 +9,19 @@ interface NavbarUser {
 
 interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
   user: NavbarUser | null
+  loading: boolean
 }
 
 export const size = '64px'
 
-export function Navbar({ user }: NavbarProps) {
+export function Navbar({ user, loading }: NavbarProps) {
   return (
     <nav className="flex justify-between align-center py-3">
       <Link href="/">
         <Logo className="w-10" />
       </Link>
       <div className="flex justify-between items-center">
-        {user ? (
+        {loading ? null : user ? (
           <>
             <div className="flex items-center mr-8">
               <img src={user.avatar_url} className="rounded-full w-6" />

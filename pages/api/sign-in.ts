@@ -7,6 +7,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       'Location',
       `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_ID}&state=${process.env.AUTH_STATE}`
     )
-
   res.end()
 }
