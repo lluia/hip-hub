@@ -6,13 +6,18 @@ export default async function callback(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  res.setHeader('Content-Type', 'application/json')
+
   try {
     const {
       query: { code, state },
     } = req
 
-    if (state !== process.env.AUTH_STATE)
-      throw new Error('[HIP HUB]: Mismatch between client states on OAuth Flow')
+    if (state !== process.env.AUTH_STATE) {
+      res.statusCode = 401
+      res.send(JSON.stringify({ error: 'Failed auth state verification' }))
+      return
+    }
 
     const tokenResponse = await fetch(
       `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${code}&state=${process.env.AUTH_STATE}`,
@@ -60,6 +65,6 @@ export default async function callback(
     res.end()
   } catch (e) {
     res.statusCode = 500
-    res.end({ error: `[HIP HUB]: ${e.message}` })
+    res.end(JSON.stringify({ error: `[HIP HUB]: ${e.message}` }))
   }
 }

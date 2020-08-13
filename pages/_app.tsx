@@ -1,10 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
-import useSWR, { SWRConfig } from 'swr'
-import { config } from '@fortawesome/fontawesome-svg-core'
-import { useRouter } from 'next/dist/client/router'
-import { Loading, Navbar } from '../components'
+import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import { Loading, Navbar } from '../components'
+import { useSession } from '../hooks'
+import { fetcher } from '../utils'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import './styles.css'
 
@@ -13,18 +14,8 @@ import './styles.css'
  */
 config.autoAddCss = false
 
-const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
-  fetch(input, init).then((res) => res.json())
-
 export default function App({ Component, pageProps }: AppProps) {
-  const { data, isValidating, error } = useSWR('/api/user', fetcher)
-  const router = useRouter()
-  const user = error ? null : data
-  const isLoading = (!data && !error) || isValidating
-
-  React.useEffect(() => {
-    if (error) router.push('/sign-in')
-  }, [error])
+  const session = useSession()
 
   return (
     <div className="min-h-screen max-w-screen-lg m-auto px-4">
@@ -35,12 +26,12 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Navbar user={user} loading={isLoading} />
-      {isLoading ? (
+      <Navbar user={session.user} loading={session.validating} />
+      {session.validating || session.redirecting ? (
         <Loading />
       ) : (
         <SWRConfig value={{ fetcher }}>
-          {isValidating ? <Loading /> : <Component {...pageProps} />}
+          <Component {...pageProps} />
         </SWRConfig>
       )}
     </div>

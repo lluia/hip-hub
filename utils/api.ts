@@ -6,8 +6,12 @@ export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
   return async function endpoint(req: NextApiRequest, res: NextApiResponse) {
     const { hhSessionToken } = req.cookies
 
+    res.setHeader('Content-Type', 'application/json')
+
     if (!hhSessionToken) {
-      throw new Error('You need to authenticate with Github!')
+      res.statusCode = 401
+      res.send(JSON.stringify({ error: 'Client needs authentication' }))
+      return
     }
 
     try {
@@ -29,3 +33,6 @@ export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
 }
 
 export const apiBase = 'https://api.github.com'
+
+export const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
+  fetch(input, init).then((res) => res.json())

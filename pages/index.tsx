@@ -6,7 +6,7 @@ import { parseNotifications } from '../utils'
 export default function Home() {
   const { data, error } = useSWR('/api/notifications')
   const notifications = parseNotifications(data)
-
+  console.log(notifications)
   return !notifications ? (
     <Loading />
   ) : error ? (
