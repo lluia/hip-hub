@@ -22,7 +22,10 @@ export function RepoName({
       {...rest}
     >
       {isOrg ? (
-        <img src={avatar_url} className="rounded-full w-4 inline-block mr-2" />
+        <img
+          src={avatar_url}
+          className="rounded-full w-3 inline-block mr-2 opacity-50"
+        />
       ) : (
         <FontAwesomeIcon icon={faCube} className="mr-2 inline-block w-4" />
       )}

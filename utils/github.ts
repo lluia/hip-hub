@@ -7,15 +7,23 @@ import type {
 interface ParsedNotification {
   subject: GithubNotificationSubject
   repository: GithubNotificationRepository
+  id: string
 }
 
 function parseNotifications(notifications: GithubNotifications | null) {
   if (!notifications) return null
 
   return Object.keys(notifications).reduce<ParsedNotification[]>((acc, key) => {
-    const { subject, repository } = notifications[key]
-    return [...acc, { subject, repository }]
+    const { subject, repository, id } = notifications[key]
+    return [...acc, { subject, repository, id }]
   }, [])
 }
 
-export { parseNotifications }
+function getNotificationPath(url: string, param?: string) {
+  return {
+    url: url.includes('release') ? `/release/${param}` : url,
+    as: url.includes('release') ? `/release/[id]` : undefined,
+  }
+}
+
+export { parseNotifications, getNotificationPath }

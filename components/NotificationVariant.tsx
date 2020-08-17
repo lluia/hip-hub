@@ -2,30 +2,34 @@ import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCodeBranch,
-  faCheck,
+  faBong,
   faFlag,
   faBahai,
 } from '@fortawesome/free-solid-svg-icons'
 import { GithubNotificationSubject } from '../types/github'
 
-interface VariantProps extends React.HTMLAttributes<HTMLSpanElement> {
+interface NotificationVariantProps
+  extends React.HTMLAttributes<HTMLSpanElement> {
   children: GithubNotificationSubject['type']
 }
 
-export function Variant({ className, children, ...props }: VariantProps) {
+export function NotificationVariant({
+  className,
+  children,
+  ...props
+}: NotificationVariantProps) {
   const actualVariant = mapVariant(children)
 
   if (!actualVariant) return null
 
-  const { color, text, icon } = actualVariant
+  const { color, icon, text } = actualVariant
 
   return (
     <span
-      className={`inline-flex items-center text-xxs py-1 px-2 rounded-full ${color} ${className}`}
+      className={`inline-flex text-xs items-center ${color} ${className}`}
       {...props}
     >
-      {icon}
-      <span className="inline-block ml-1">{text}</span>
+      {icon} <span className="ml-2 text-xxs">{text}</span>
     </span>
   )
 }
@@ -35,26 +39,26 @@ function mapVariant(variant: string) {
     case 'PullRequest':
       return {
         color: 'text-aux-purple',
-        text: 'Pull Request',
-        icon: <FontAwesomeIcon icon={faCodeBranch} className="w-2" />,
+        text: 'PR',
+        icon: <FontAwesomeIcon icon={faCodeBranch} />,
       }
     case 'Issue':
       return {
         color: 'text-aux-blue',
-        text: 'Story',
-        icon: <FontAwesomeIcon icon={faFlag} className="w-2" />,
+        text: 'story',
+        icon: <FontAwesomeIcon icon={faFlag} />,
       }
     case 'Release':
       return {
-        color: 'text-aux-green',
-        text: 'Released',
-        icon: <FontAwesomeIcon icon={faCheck} className="w-2" />,
+        color: 'text-aux-yellow',
+        text: 'release',
+        icon: <FontAwesomeIcon icon={faBong} />,
       }
     case 'Commit':
       return {
         color: 'text-dark',
         text: 'Commit',
-        icon: <FontAwesomeIcon icon={faBahai} className="w-2" />,
+        icon: <FontAwesomeIcon icon={faBahai} />,
       }
     default:
       return null

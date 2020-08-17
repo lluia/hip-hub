@@ -1,8 +1,14 @@
 import * as React from 'react'
 import { Heading } from './Heading'
+import Link from 'next/link'
+
+interface LinkProps {
+  url: string
+  as?: string
+}
 
 interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
-  goTo?: string
+  goTo?: LinkProps
 }
 
 Card.Title = Heading
@@ -17,9 +23,15 @@ export function Card({ className, goTo, ...props }: DivProps) {
   )
 
   return goTo ? (
-    <a href={goTo} className="block cursor-pointer">
-      {content}
-    </a>
+    isExternalUrl(goTo.url) ? (
+      <a href={goTo.url} className="block cursor-pointer">
+        {content}
+      </a>
+    ) : (
+      <Link href={goTo.as || ''} as={goTo.url}>
+        <a>{content}</a>
+      </Link>
+    )
   ) : (
     content
   )
@@ -27,4 +39,8 @@ export function Card({ className, goTo, ...props }: DivProps) {
 
 function CardContent({ ...props }: DivProps) {
   return <div {...props} />
+}
+
+function isExternalUrl(url: string) {
+  return url[0] !== '/'
 }

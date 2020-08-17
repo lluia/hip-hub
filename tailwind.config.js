@@ -48,6 +48,7 @@ module.exports = {
       ['aux-green']: '#00C853',
       ['aux-green-light']: '#64DD17',
       ['aux-blue']: '#0091EA',
+      ['aux-yellow']: '#F39C12',
     },
     spacing: {
       px: '1px',

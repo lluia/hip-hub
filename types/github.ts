@@ -7,6 +7,7 @@ export interface GithubNotification {
   subject: GithubNotificationSubject
   url: string
   repository: GithubNotificationRepository
+  id: string
 }
 
 export interface GithubNotificationSubject {

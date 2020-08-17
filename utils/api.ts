@@ -2,7 +2,14 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { verify } from 'jsonwebtoken'
 import type { JWTPayload } from '../types/'
 
-export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
+export interface FetchContext {
+  req: NextApiRequest
+  res: NextApiResponse
+}
+
+type Fetcher = (token: string, ctx: FetchContext) => Promise<Response>
+
+export function buildAutRoute(fetcher: Fetcher) {
   return async function endpoint(req: NextApiRequest, res: NextApiResponse) {
     const { hhSessionToken } = req.cookies
 
@@ -20,7 +27,7 @@ export function buildAutRoute(fetcher: (token: string) => Promise<Response>) {
         process.env.JWT_SECRET!
       ) as JWTPayload
 
-      const response = await fetcher(session.token)
+      const response = await fetcher(session.token, { req, res })
       const data = await response.json()
 
       res.statusCode = 200

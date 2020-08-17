@@ -1,9 +1,20 @@
 import React, { HTMLAttributes } from 'react'
 
-interface LinkProps extends HTMLAttributes<HTMLAnchorElement> {}
+interface LinkProps extends HTMLAttributes<HTMLAnchorElement> {
+  onPress: () => void
+}
 
-const baseStyle = 'text-link'
+export function Link({ className, onPress, ...props }: LinkProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    onPress()
+  }
 
-export function Link({ className, ...props }: LinkProps) {
-  return <a className={`${baseStyle} ${className}`} {...props} />
+  return (
+    <a
+      className={`text-link cursor-pointer ${className}`}
+      onClick={handleClick}
+      {...props}
+    />
+  )
 }
