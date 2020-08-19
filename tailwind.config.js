@@ -5,6 +5,7 @@ module.exports = {
     screens: {
       sm: '500px',
       md: '768px',
+      ml: '900px',
       lg: '1024px',
       xl: '1280px',
     },
@@ -39,7 +40,7 @@ module.exports = {
       dark: '#757575',
       grey: '#BDBDBD',
       ['blue-grey']: '#607D8B',
-      ['near-white']: '#EEEEEE',
+      ['near-white']: 'rgb(247, 247, 247)',
       white: '#FAFAFA',
       /**
        * Other

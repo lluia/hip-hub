@@ -21,5 +21,5 @@ export const Heading = ({ className, ...props }: HeadingProps) => {
   const Tag = props.as || 'h1'
   const style = tagToStyleMap[props.size || props.as]
 
-  return <Tag className={`${style} ${className}`} {...props} />
+  return <Tag className={`${className} ${style}`} {...props} />
 }
