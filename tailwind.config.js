@@ -5,7 +5,7 @@ module.exports = {
     screens: {
       sm: '500px',
       md: '768px',
-      ml: '900px',
+      ml: '800px',
       lg: '1024px',
       xl: '1280px',
     },
@@ -26,21 +26,21 @@ module.exports = {
        */
       success: '#4CAF50',
       ['success-dark']: '#388E3C',
-      ['success-light']: '#A5D6A7',
+      ['success-light']: '#F0F4C3',
       error: '#E64A19',
       ['error-dark']: '#BF360C',
       ['error-light']: '#FFAB91',
       warning: '#FBC02D',
-      ['warning-dark']: '#F9A825',
-      ['warning-light']: '#FFE082',
+      ['warning-dark']: '#FF6D00',
+      ['warning-light']: '#FFECB3',
       /**
        * Gray scale
        */
       black: '#263238',
       dark: '#757575',
       grey: '#BDBDBD',
-      ['blue-grey']: '#607D8B',
-      ['near-white']: 'rgb(247, 247, 247)',
+      ['near-grey']: '#E9E9E9',
+      ['near-white']: '#F7F7F7',
       white: '#FAFAFA',
       /**
        * Other

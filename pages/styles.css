@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import './markdown.css';
 
 body {
   @apply bg-near-white;
@@ -16,56 +17,4 @@ body {
   background-size: 100% 0.2em;
   background-position: 0 88%;
   transition: background-size 0.25s ease-in;
-}
-
-/**
- * MARKDOWN
- */
-
-.markdown-block ul {
-  @apply list-disc;
-  @apply ml-3;
-}
-
-.markdown-block p,
-.markdown-block ul {
-  @apply mb-3;
-  @apply text-sm;
-}
-
-.markdown-block ul li {
-  @apply mb-1;
-}
-
-.markdown-block code {
-  @apply font-mono;
-  @apply text-xs;
-  @apply bg-warning-light;
-  @apply p-1;
-  @apply rounded-sm;
-  @apply mx-1;
-}
-
-.markdown-block ul li:last-child {
-  @apply mb-0;
-}
-
-.markdown-block *:last-child {
-  @apply mb-0;
-}
-
-.markdown-block h1,
-.markdown-block h2,
-.markdown-block h3,
-.markdown-block h4 {
-  @apply text-xl;
-  @apply font-bold;
-  @apply mb-3;
-}
-
-.markdown-block h5,
-.markdown-block h6 {
-  @apply text-lg;
-  @apply font-bold;
-  @apply mb-2;
 }

@@ -26,7 +26,7 @@ export function Navbar({ user, loading }: NavbarProps) {
             <div className="flex items-center mr-8">
               <img src={user.avatar} className="rounded-full w-6" />
               <span className="inline-block ml-3">
-                <span className="text-xs italic inline-block mr-2">Howdy</span>{' '}
+                <span className="text-xs inline-block mr-2">Howdy</span>{' '}
                 <strong>{user.name}</strong>
               </span>
             </div>

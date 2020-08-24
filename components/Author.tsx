@@ -10,7 +10,10 @@ interface AuthorProps extends LinkProps {
 
 export function Author({ avatar, name, url, className }: AuthorProps) {
   return (
-    <Link className={`inline-flex items-center ml-3 ${className}`} href={url}>
+    <Link
+      className={`inline-flex items-center ml-3  text-black font-extrabold ${className}`}
+      href={url}
+    >
       <img src={avatar} className="rounded-full w-8 mr-2" />
       {name}
     </Link>
