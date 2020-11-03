@@ -3,7 +3,6 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react-hooks'],
   extends: [
-    'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
@@ -11,6 +10,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   rules: {
+    'react/prop-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-use-before-define': ['error', { functions: false }],

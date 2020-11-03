@@ -19,7 +19,8 @@ function parseNotifications(notifications: GithubNotifications | null) {
   }, [])
 }
 
-function getNotificationPath(url: string, param?: string) {
+function getNotificationPath(url: string | null, param?: string) {
+  if (!url) return null
   return {
     url: url.includes('release') ? `/release/${param}` : url,
     as: url.includes('release') ? `/release/[id]` : undefined,

@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react'
 
 export interface LinkProps extends HTMLAttributes<HTMLAnchorElement> {
   onPress?: () => void
+  href?: string
 }
 
 export function Link({ className, onPress, ...props }: LinkProps) {

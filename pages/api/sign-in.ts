@@ -5,7 +5,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     .status(302)
     .setHeader(
       'Location',
-      `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_ID}&state=${process.env.AUTH_STATE}`
+      `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&state=${process.env.AUTH_STATE}`
     )
   res.end()
 }

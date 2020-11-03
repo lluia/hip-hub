@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "types": "tsc --noEmit",
-    "lint": "eslint '{pages,utils}/*.{ts,tsx}'",
+    "lint": "eslint '{pages,utils}/**/*.{ts,tsx}'",
     "format": "prettier -l --write \"**/*.{ts,tsx,md}\""
   },
   "author": "Lluis Agusti <hi@llu.lu>",
@@ -25,6 +25,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
+    "reakit": "^1.2.5",
     "swr": "^0.3.2",
     "tailwindcss": "^1.8.5"
   },

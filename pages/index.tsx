@@ -27,7 +27,7 @@ export default function Home() {
               subject: { title, url, type },
               repository: { name, owner },
             }) => (
-              <li key={title}>
+              <li key={url}>
                 <Card goTo={getNotificationPath(url, id)}>
                   <Card.Title as="h4" size="h6" className="flex items-baseline">
                     <NotificationVariant>{type}</NotificationVariant>

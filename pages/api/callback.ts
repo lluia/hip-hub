@@ -20,7 +20,7 @@ export default async function callback(
     }
 
     const tokenResponse = await fetch(
-      `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_ID}&client_secret=${process.env.GITHUB_SECRET}&code=${code}&state=${process.env.AUTH_STATE}`,
+      `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}&code=${code}&state=${process.env.AUTH_STATE}`,
       {
         method: 'POST',
         headers: {

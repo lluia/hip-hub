@@ -8,7 +8,7 @@ interface LinkProps {
 }
 
 interface DivProps extends React.HTMLAttributes<HTMLDivElement> {
-  goTo?: LinkProps
+  goTo?: LinkProps | null
 }
 
 Card.Title = Heading
@@ -17,7 +17,7 @@ Card.Content = CardContent
 export function Card({ className, goTo, ...props }: DivProps) {
   const content = (
     <div
-      className={`bg-white p-8 relative border-b border-solid border-white shadow rounded mb-5 ${className}`}
+      className={`bg-white p-6 relative border-b border-solid border-white shadow rounded mb-5 ${className}`}
       {...props}
     />
   )

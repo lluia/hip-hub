@@ -2,8 +2,6 @@ import * as React from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faParachuteBox } from '@fortawesome/free-solid-svg-icons'
 import {
   PageWrap,
   Author,
@@ -11,15 +9,14 @@ import {
   Back,
   Loading,
   Markdown,
-  Emoji,
   BoxContent,
-  Link,
   Badge,
 } from '../../components'
+import { DownloadLink } from '../../components/DownloadLink'
 
 export default function Release() {
   const router = useRouter()
-  const { data, error } = useSWR(`/api/release/${router.query.id}`)
+  const { data } = useSWR(`/api/release/${router.query.id}`)
   const releaseName = data && data.tag_name ? data.tag_name : 'release'
 
   const releaseType = !data
@@ -29,8 +26,6 @@ export default function Release() {
     : data.prerelease
     ? 'beta release'
     : 'normal release'
-
-  console.log(data)
 
   return (
     <PageWrap>
@@ -46,15 +41,15 @@ export default function Release() {
           </div>
           {data ? (
             <>
-              <p className="flex  justify-center items-center text-sm">
+              <p className="flex justify-center items-center text-sm">
                 <Author
                   name={data.author.login}
                   avatar={data.author.avatar_url}
-                  url={data.author.html_url}
+                  href={data.author.html_url}
                   className="mr-1"
                 />
                 <span>
-                  released{' '}
+                  released this{' '}
                   {formatRelative(new Date(data.published_at), Date.now(), {
                     weekStartsOn: 1,
                   })}{' '}
@@ -77,21 +72,5 @@ export default function Release() {
         </>
       )}
     </PageWrap>
-  )
-}
-
-function DownloadLink({ children, ...rest }) {
-  return (
-    <Link
-      className="uppercase text-xxs text-black font-bold ml-4 inline-flex items-center"
-      {...rest}
-    >
-      {children}{' '}
-      <FontAwesomeIcon
-        icon={faParachuteBox}
-        aria-label="cardboard box emoji"
-        className="text-lg text-action ml-1"
-      />
-    </Link>
   )
 }
