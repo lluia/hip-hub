@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { useCheckboxState, Checkbox, CheckboxProps } from 'reakit/Checkbox'
 import { css } from 'emotion'
-import { NotificationVariantTypes, NOTIFICATION_VARIANTS } from '../constants'
+import { NotificationVariant, NOTIFICATION_VARIANTS } from '../constants'
 
 interface NotificationFiltersProps {
-  onSelect(state: NotificationVariantTypes[]): void
+  onSelect(state: NotificationVariant[]): void
 }
 
 const FilterLabel: React.FC = ({ children }) => {
@@ -15,7 +15,7 @@ const FilterLabel: React.FC = ({ children }) => {
   )
 }
 
-const FilterCheck: React.FC = (props: CheckboxProps) => {
+const FilterCheck: React.FC<CheckboxProps> = (props) => {
   return (
     <Checkbox
       {...props}
@@ -27,7 +27,7 @@ const FilterCheck: React.FC = (props: CheckboxProps) => {
 
 export function NotificationFilters({ onSelect }: NotificationFiltersProps) {
   const checkbox = useCheckboxState({ state: [] })
-  const checkboxState = checkbox.state as string[]
+  const checkboxState = checkbox.state as NotificationVariant[]
 
   React.useEffect(() => {
     onSelect(checkboxState)
