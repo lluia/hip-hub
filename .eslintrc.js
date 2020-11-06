@@ -40,7 +40,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js'],
+      files: ['./**/*.js'],
+      parser: 'espree',
+      parserOptions: { ecmaVersion: 'ESNEXT' },
       env: {
         node: true,
       },
