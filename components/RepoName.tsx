@@ -25,9 +25,14 @@ export function RepoName({
         <img
           src={avatar_url}
           className="rounded-full w-3 inline-block mr-2 opacity-50"
+          data-testid="ORG_AVATAR"
         />
       ) : (
-        <FontAwesomeIcon icon={faCube} className="mr-2 inline-block w-4" />
+        <FontAwesomeIcon
+          icon={faCube}
+          className="mr-2 inline-block w-4"
+          data-testid="DEFAULT_AVATAR"
+        />
       )}
       {children}
     </span>

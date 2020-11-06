@@ -23,7 +23,7 @@ export interface GithubNotificationRepository {
 }
 
 export interface GithubNotificationRepositoryOwner {
-  type: 'Organization'
-  avatar_url: string
+  type: 'Organization' | 'User'
+  avatar_url?: string
   login: string
 }
