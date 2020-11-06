@@ -5,13 +5,22 @@ import {
   faBong,
   faFlag,
   faBahai,
+  faComments,
 } from '@fortawesome/free-solid-svg-icons'
 import { GithubNotificationSubject } from '../types/github'
+import { css } from 'emotion'
+import { NOTIFICATION_VARIANTS } from '../constants'
 
 interface NotificationVariantProps
   extends React.HTMLAttributes<HTMLSpanElement> {
   children: GithubNotificationSubject['type']
 }
+
+const customStyle = css`
+  min-width: 5.5rem;
+  position: relative;
+  bottom: 1px;
+`
 
 export function NotificationVariant({
   className,
@@ -26,39 +35,45 @@ export function NotificationVariant({
 
   return (
     <span
-      className={`inline-flex text-xs items-center ${color} ${className}`}
+      className={`inline-flex text-xs items-center ${color} ${customStyle} ${className} `}
       {...props}
     >
-      {icon} <span className="ml-2 text-xxs">{text}</span>
+      {icon} <span className="ml-2 text-xs">{text}</span>
     </span>
   )
 }
 
 function mapVariant(variant: string) {
   switch (variant) {
-    case 'PullRequest':
+    case NOTIFICATION_VARIANTS.PR:
       return {
         color: 'text-aux-purple',
-        text: 'PR',
+        text: 'Pull Request',
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
       }
-    case 'Issue':
+    case NOTIFICATION_VARIANTS.Story:
       return {
         color: 'text-aux-blue',
-        text: 'story',
+        text: 'Story',
         icon: <FontAwesomeIcon icon={faFlag} />,
       }
-    case 'Release':
+    case NOTIFICATION_VARIANTS.Release:
       return {
         color: 'text-aux-yellow',
-        text: 'release',
+        text: 'Release',
         icon: <FontAwesomeIcon icon={faBong} />,
       }
-    case 'Commit':
+    case NOTIFICATION_VARIANTS.Commit:
       return {
         color: 'text-dark',
         text: 'Commit',
         icon: <FontAwesomeIcon icon={faBahai} />,
+      }
+    case NOTIFICATION_VARIANTS.Discussion:
+      return {
+        color: 'text-aux-green',
+        text: 'Discussion',
+        icon: <FontAwesomeIcon icon={faComments} />,
       }
     default:
       return null

@@ -1,3 +1,4 @@
+import { NotificationVariant } from '../constants'
 import type {
   GithubNotificationSubject,
   GithubNotifications,
@@ -10,13 +11,20 @@ interface ParsedNotification {
   id: string
 }
 
-function parseNotifications(notifications: GithubNotifications | null) {
+function parseNotifications(
+  notifications: GithubNotifications | null,
+  filters?: NotificationVariant[]
+) {
   if (!notifications) return null
 
-  return Object.keys(notifications).reduce<ParsedNotification[]>((acc, key) => {
-    const { subject, repository, id } = notifications[key]
-    return [...acc, { subject, repository, id }]
-  }, [])
+  return Object.keys(notifications)
+    .reduce<ParsedNotification[]>((acc, key) => {
+      const { subject, repository, id } = notifications[key]
+      return [...acc, { subject, repository, id }]
+    }, [])
+    .filter(({ subject: { type } }) =>
+      filters && filters.length ? filters.includes(type) : true
+    )
 }
 
 function getNotificationPath(url: string | null, param?: string) {

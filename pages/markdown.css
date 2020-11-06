@@ -10,13 +10,18 @@
 }
 
 .markdown-block ul li {
-  @apply mb-2;
+  @apply mb-3;
+}
+
+.markdown-block ul li ul li {
+  @apply mt-2;
 }
 
 .markdown-block code {
   @apply font-mono;
-  @apply text-xs;
-  @apply bg-warning-light;
+  @apply text-xxs;
+  @apply bg-near-grey;
+  @apply text-aux-orange;
   @apply p-1;
   @apply rounded-sm;
   @apply mx-1;

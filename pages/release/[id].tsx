@@ -10,9 +10,14 @@ import {
   Loading,
   Markdown,
   BoxContent,
-  Badge,
+  Tooltip,
+  DownloadPopover,
 } from '../../components'
-import { DownloadLink } from '../../components/DownloadLink'
+import {
+  LabIllustration,
+  DraftIllustration,
+  AwardIllustration,
+} from '../../components/illustrations'
 
 export default function Release() {
   const router = useRouter()
@@ -24,8 +29,8 @@ export default function Release() {
     : data.draft
     ? 'draft'
     : data.prerelease
-    ? 'beta release'
-    : 'normal release'
+    ? 'beta'
+    : 'release'
 
   return (
     <PageWrap>
@@ -35,37 +40,43 @@ export default function Release() {
         <>
           <div className="flex flex-row justify-center items-center relative">
             <Back className="absolute left-0 top-0 mt-3" />
-            <Heading as="h3" className="mb-0 underline-magic">
-              {releaseName}
-            </Heading>
+            <div className="flex flex-row">
+              <Heading as="h3" className="mb-0 mr-4 underline-magic">
+                {releaseName}
+              </Heading>
+              {releaseType === 'draft' ? (
+                <Tooltip target={<DraftIllustration />}>Draft release</Tooltip>
+              ) : releaseType === 'beta' ? (
+                <Tooltip target={<LabIllustration />}>Beta release</Tooltip>
+              ) : (
+                <Tooltip target={<AwardIllustration />}>Normal release</Tooltip>
+              )}
+            </div>
           </div>
           {data ? (
             <>
               <p className="flex justify-center items-center text-sm">
                 <Author
-                  name={data.author.login}
-                  avatar={data.author.avatar_url}
-                  href={data.author.html_url}
+                  name={data?.author?.login}
+                  avatar={data?.author?.avatar_url}
+                  href={data?.author?.html_url}
                   className="mr-1"
                 />
                 <span>
                   released this{' '}
-                  {formatRelative(new Date(data.published_at), Date.now(), {
+                  {formatRelative(new Date(data?.published_at), Date.now(), {
                     weekStartsOn: 1,
                   })}{' '}
                 </span>
               </p>
               <div className="flex justify-end text-sm mt-12 items-center">
-                <DownloadLink href={data.zipball_url}>Zip</DownloadLink>
-                <DownloadLink href={data.tarball_url}>Tar</DownloadLink>
-                <div className="ml-4 font-bold text-xs">
-                  <Badge variant="success" className="ml-1">
-                    {releaseType}
-                  </Badge>
-                </div>
+                <DownloadPopover
+                  zip={data?.zipball_url}
+                  tar={data?.tarball_url}
+                />
               </div>
               <BoxContent className="mt-5">
-                <Markdown source={data.body} />
+                <Markdown source={data?.body} />
               </BoxContent>
             </>
           ) : null}
