@@ -41,5 +41,11 @@ export function buildAutRoute(fetcher: Fetcher) {
 
 export const apiBase = 'https://api.github.com'
 
-export const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
-  fetch(input, init).then((res) => res.json())
+export const fetcher = async (
+  input: RequestInfo,
+  init?: RequestInit | undefined
+) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}${input}`, init)
+  const data = res.json()
+  return data
+}

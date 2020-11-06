@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1604663841583" clover="3.2.0">
+  <project timestamp="1604663841583" name="All files">
+    <metrics statements="147" coveredstatements="62" conditionals="77" coveredconditionals="24" methods="49" coveredmethods="20" elements="273" coveredelements="106" complexity="0" loc="147" ncloc="147" packages="9" files="43" classes="43"/>
+    <package name="components">
+      <metrics statements="65" coveredstatements="44" conditionals="33" coveredconditionals="12" methods="26" coveredmethods="13"/>
+      <file name="Author.tsx" path="/Users/lluis/Code/hip-hub/components/Author.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="Back.tsx" path="/Users/lluis/Code/hip-hub/components/Back.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="Badge.tsx" path="/Users/lluis/Code/hip-hub/components/Badge.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="BoxContent.tsx" path="/Users/lluis/Code/hip-hub/components/BoxContent.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+      </file>
+      <file name="Button.tsx" path="/Users/lluis/Code/hip-hub/components/Button.tsx">
+        <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+      </file>
+      <file name="Card.tsx" path="/Users/lluis/Code/hip-hub/components/Card.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="25" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="45" count="12" type="stmt"/>
+      </file>
+      <file name="DownloadPopover.tsx" path="/Users/lluis/Code/hip-hub/components/DownloadPopover.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
+      <file name="Emoji.tsx" path="/Users/lluis/Code/hip-hub/components/Emoji.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="Heading.tsx" path="/Users/lluis/Code/hip-hub/components/Heading.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="12" type="stmt"/>
+      </file>
+      <file name="Link.tsx" path="/Users/lluis/Code/hip-hub/components/Link.tsx">
+        <metrics statements="4" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+      <file name="Loading.tsx" path="/Users/lluis/Code/hip-hub/components/Loading.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+      <file name="Logo.tsx" path="/Users/lluis/Code/hip-hub/components/Logo.tsx">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+      <file name="Markdown.tsx" path="/Users/lluis/Code/hip-hub/components/Markdown.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+      <file name="Navbar.tsx" path="/Users/lluis/Code/hip-hub/components/Navbar.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="NotificationFilters.tsx" path="/Users/lluis/Code/hip-hub/components/NotificationFilters.tsx">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="20" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="20" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+      <file name="NotificationVariant.tsx" path="/Users/lluis/Code/hip-hub/components/NotificationVariant.tsx">
+        <metrics statements="12" coveredstatements="9" conditionals="8" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="32" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
+        <line num="47" count="15" type="cond" truecount="3" falsecount="3"/>
+        <line num="49" count="5" type="stmt"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+      </file>
+      <file name="PageWrap.tsx" path="/Users/lluis/Code/hip-hub/components/PageWrap.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="6" count="7" type="stmt"/>
+      </file>
+      <file name="RepoName.tsx" path="/Users/lluis/Code/hip-hub/components/RepoName.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="12" type="stmt"/>
+      </file>
+      <file name="Tooltip.tsx" path="/Users/lluis/Code/hip-hub/components/Tooltip.tsx">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/lluis/Code/hip-hub/components/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="components.illustrations">
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="Award.tsx" path="/Users/lluis/Code/hip-hub/components/illustrations/Award.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="Draft.tsx" path="/Users/lluis/Code/hip-hub/components/illustrations/Draft.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="Lab.tsx" path="/Users/lluis/Code/hip-hub/components/illustrations/Lab.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/lluis/Code/hip-hub/components/illustrations/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="constants">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/lluis/Code/hip-hub/constants/index.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="9" coveredstatements="5" conditionals="10" coveredconditionals="4" methods="4" coveredmethods="2"/>
+      <file name="_app.tsx" path="/Users/lluis/Code/hip-hub/pages/_app.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+      <file name="index.tsx" path="/Users/lluis/Code/hip-hub/pages/index.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="44" count="12" type="stmt"/>
+      </file>
+      <file name="sign-in.tsx" path="/Users/lluis/Code/hip-hub/pages/sign-in.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.api">
+      <metrics statements="29" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="callback.ts" path="/Users/lluis/Code/hip-hub/pages/api/callback.ts">
+        <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+      </file>
+      <file name="notifications.ts" path="/Users/lluis/Code/hip-hub/pages/api/notifications.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="sign-in.ts" path="/Users/lluis/Code/hip-hub/pages/api/sign-in.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="sign-out.ts" path="/Users/lluis/Code/hip-hub/pages/api/sign-out.ts">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="user.ts" path="/Users/lluis/Code/hip-hub/pages/api/user.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.api.release">
+      <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="[id].ts" path="/Users/lluis/Code/hip-hub/pages/api/release/[id].ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.release">
+      <metrics statements="5" coveredstatements="0" conditionals="18" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="[id].tsx" path="/Users/lluis/Code/hip-hub/pages/release/[id].tsx">
+        <metrics statements="5" coveredstatements="0" conditionals="18" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="35" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="types">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="api.ts" path="/Users/lluis/Code/hip-hub/types/api.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="github.ts" path="/Users/lluis/Code/hip-hub/types/github.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="index.ts" path="/Users/lluis/Code/hip-hub/types/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="29" coveredstatements="12" conditionals="14" coveredconditionals="8" methods="9" coveredmethods="5"/>
+      <file name="api.ts" path="/Users/lluis/Code/hip-hub/utils/api.ts">
+        <metrics statements="20" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="dom.ts" path="/Users/lluis/Code/hip-hub/utils/dom.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+      </file>
+      <file name="github.ts" path="/Users/lluis/Code/hip-hub/utils/github.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="12" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="18" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="26" count="12" type="cond" truecount="3" falsecount="1"/>
+        <line num="31" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="12" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/lluis/Code/hip-hub/utils/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="types.ts" path="/Users/lluis/Code/hip-hub/utils/types.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

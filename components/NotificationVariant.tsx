@@ -43,7 +43,7 @@ export function NotificationVariant({
   )
 }
 
-function mapVariant(variant: string) {
+export function mapVariant(variant: string) {
   switch (variant) {
     case NOTIFICATION_VARIANTS.PR:
       return {
