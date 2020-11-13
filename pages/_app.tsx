@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Hip Hub!</title>
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto+Mono:wght@400&display=swap"
           rel="stylesheet"
         />
       </Head>

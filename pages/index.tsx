@@ -49,7 +49,7 @@ export default function Home() {
                         <Card.Title
                           as="h4"
                           size="h6"
-                          className="flex items-end"
+                          className="flex items-baseline"
                         >
                           <NotificationVariant>{type}</NotificationVariant>
                           <span className="ml-5 inline-block">{title}</span>

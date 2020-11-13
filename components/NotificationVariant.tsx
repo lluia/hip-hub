@@ -18,8 +18,6 @@ interface NotificationVariantProps
 
 const customStyle = css`
   min-width: 5.5rem;
-  position: relative;
-  bottom: 1px;
 `
 
 export function NotificationVariant({
@@ -35,7 +33,7 @@ export function NotificationVariant({
 
   return (
     <span
-      className={`inline-flex text-xs items-center ${color} ${customStyle} ${className} `}
+      className={`inline-flex text-xs items-center font-light ${color} ${customStyle} ${className} `}
       {...props}
     >
       {icon} <span className="ml-2 text-xs">{text}</span>

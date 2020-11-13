@@ -37,8 +37,8 @@ export function Card({ className, goTo, ...props }: DivProps) {
   )
 }
 
-function CardContent({ ...props }: DivProps) {
-  return <div {...props} />
+function CardContent({ className, ...props }: DivProps) {
+  return <div className={`mt-4 ${className}`} {...props} />
 }
 
 function isExternalUrl(url: string) {

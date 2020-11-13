@@ -1,5 +1,4 @@
 import notifications from '../fixtures/notifications-full.json'
-import { notificationsMock } from '../../test/server/mocks/notifications'
 
 context('• Feed', () => {
   describe('– with notifications', () => {

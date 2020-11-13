@@ -1,5 +1,21 @@
 const plugin = require('tailwindcss/plugin')
 
+const systemFontStack = [
+  'system-ui',
+  '-apple-system',
+  'BlinkMacSystemFont',
+  '"Segoe UI"',
+  'Roboto',
+  '"Helvetica Neue"',
+  'Arial',
+  '"Noto Sans"',
+  'sans-serif',
+  '"Apple Color Emoji"',
+  '"Segoe UI Emoji"',
+  '"Segoe UI Symbol"',
+  '"Noto Color Emoji"',
+]
+
 module.exports = {
   theme: {
     screens: {
@@ -87,23 +103,10 @@ module.exports = {
       100: '1',
     },
     fontFamily: {
-      sans: [
-        'Lato',
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
+      sans: ['Lato', ...systemFontStack],
+      display: ['Lato', ...systemFontStack],
       mono: [
+        'Roboto Mono',
         'Menlo',
         'Monaco',
         'Consolas',

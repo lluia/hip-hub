@@ -29,9 +29,25 @@ function parseNotifications(
 
 function getNotificationPath(url: string | null, param?: string) {
   if (!url) return null
+  return constructDetailPageUrl(url, param)
+}
+
+function constructDetailPageUrl(url: string, param?: string) {
+  if (url.includes('release'))
+    return {
+      url: `/release/${param}`,
+      as: `/release/[id]`,
+    }
+
+  if (url.includes('issues'))
+    return {
+      url: `/story/${param}`,
+      as: `/story/[id]`,
+    }
+
   return {
-    url: url.includes('release') ? `/release/${param}` : url,
-    as: url.includes('release') ? `/release/[id]` : undefined,
+    url,
+    as: undefined,
   }
 }
 

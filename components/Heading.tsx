@@ -8,18 +8,18 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const tagToStyleMap: { [k in HeadingProps['as']]: string } = {
-  h1: 'text-5xl leading-none mb-8 font-extrabold',
-  h2: 'text-4xl leading-tight mb-8 font-extrabold',
-  h3: 'text-3xl leading-tight mb-6 font-bold',
-  h4: 'text-2xl leading-snug mb-6 font-bold',
-  h5: 'text-lg leading-snug mb-5 font-bold',
-  h6: 'text-base leading-snug mb-5 font-bold',
-  span: 'text-base leading-normal mb-3 font-bold',
+  h1: 'text-5xl leading-tight font-bold font-display',
+  h2: 'text-4xl leading-tight font-bold font-display',
+  h3: 'text-3xl leading-tight font-bold font-display',
+  h4: 'text-2xl leading-snug font-bold font-display',
+  h5: 'text-lg leading-snug font-bold font-display',
+  h6: 'text-base leading-snug font-bold font-display',
+  span: 'text-base leading-normal font-bold font-display',
 }
 
 export const Heading = ({ className, ...props }: HeadingProps) => {
   const Tag = props.as || 'h1'
   const style = tagToStyleMap[props.size || props.as]
 
-  return <Tag className={`${style} ${className}`} {...props} />
+  return <Tag className={`${className} ${style}`} {...props} />
 }

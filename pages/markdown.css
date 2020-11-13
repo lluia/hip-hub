@@ -11,6 +11,7 @@
 
 .markdown-block ul li {
   @apply mb-3;
+  @apply ml-3;
 }
 
 .markdown-block ul li ul li {
@@ -20,9 +21,10 @@
 .markdown-block code {
   @apply font-mono;
   @apply text-xxs;
-  @apply bg-near-grey;
-  @apply text-aux-orange;
-  @apply p-1;
+  @apply bg-dark;
+  @apply text-white;
+  @apply py-1;
+  @apply px-2;
   @apply rounded-sm;
   @apply mx-1;
 }
@@ -37,14 +39,14 @@
 
 .markdown-block h1,
 .markdown-block h2 {
-  @apply text-2xl;
+  @apply text-xl;
   @apply font-bold;
   @apply mb-6;
 }
 
 .markdown-block h3,
 .markdown-block h4 {
-  @apply text-xl;
+  @apply text-lg;
   @apply font-bold;
   @apply mb-4;
   @apply pb-1;

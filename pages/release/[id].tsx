@@ -10,14 +10,9 @@ import {
   Loading,
   Markdown,
   BoxContent,
-  Tooltip,
   DownloadPopover,
+  Badge,
 } from '../../components'
-import {
-  LabIllustration,
-  DraftIllustration,
-  AwardIllustration,
-} from '../../components/illustrations'
 
 export default function Release() {
   const router = useRouter()
@@ -40,17 +35,15 @@ export default function Release() {
         <>
           <div className="flex flex-row justify-center items-center relative">
             <Back className="absolute left-0 top-0 mt-3" />
-            <div className="flex flex-row">
-              <Heading as="h3" className="mb-0 mr-4 underline-magic">
+            <div className="flex flex-row items-center mb-4">
+              <Heading as="h1" size="h3" className="mr-4">
                 {releaseName}
               </Heading>
               {releaseType === 'draft' ? (
-                <Tooltip target={<DraftIllustration />}>Draft release</Tooltip>
+                <Badge variant="success">Draft</Badge>
               ) : releaseType === 'beta' ? (
-                <Tooltip target={<LabIllustration />}>Beta release</Tooltip>
-              ) : (
-                <Tooltip target={<AwardIllustration />}>Normal release</Tooltip>
-              )}
+                <Badge variant="success">Beta</Badge>
+              ) : null}
             </div>
           </div>
           {data ? (
