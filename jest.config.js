@@ -7,9 +7,9 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'babel-jest',
   },
   moduleNameMapper: {
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/etc/jest/__mocks__/fileMock.js',
   },
-  setupFilesAfterEnv: ['./test/jest-setup.ts'],
+  setupFilesAfterEnv: ['./etc/jest/jest-setup.ts'],
   setupFiles: ['dotenv/config'],
   collectCoverageFrom: [
     './pages/**/*.{ts,tsx}',

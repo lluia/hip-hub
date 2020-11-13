@@ -9,7 +9,6 @@ import {
   NotificationFilters,
 } from '../components'
 import type { NotificationVariant as NotificationVariantType } from '../constants'
-import * as dataTestIds from '../test/test-ids'
 import { parseNotifications, getNotificationPath } from '../utils'
 
 export default function Home() {
@@ -27,7 +26,7 @@ export default function Home() {
       ) : error ? (
         <div>Ups we had an issue loading your notifications...</div>
       ) : (
-        <div data-testid={dataTestIds.NOTIFICATION_FEED}>
+        <div data-testid="NOTIFICATION_FEED">
           {notifications.length ? (
             <>
               <div className="flex justify-between items-baseline">
@@ -44,7 +43,7 @@ export default function Home() {
                     <li key={id}>
                       <Card
                         goTo={getNotificationPath(url, id)}
-                        data-testid={`${dataTestIds.NOTIFICATION_CARD}-${id}`}
+                        data-testid={`NOTIFICATION_CARD-${id}`}
                       >
                         <Card.Title
                           as="h4"

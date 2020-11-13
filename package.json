@@ -11,9 +11,8 @@
     "types": "tsc --noEmit",
     "lint": "eslint '{pages,utils}/**/*.{ts,tsx}'",
     "format": "prettier -l --write \"**/*.{ts,tsx,md}\"",
-    "test-int": "jest --watch --testPathPattern test/integration",
     "test-unit": "jest --watch --testPathPattern components",
-    "test-cypress": "start-server-and-test dev http://localhost:3000 cy:open",
+    "test-int": "start-server-and-test dev http://localhost:3000 cy:open",
     "cy:open": "cypress open"
   },
   "author": "Lluis Agusti <hi@llu.lu>",
