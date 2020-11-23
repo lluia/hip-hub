@@ -18,7 +18,7 @@ export function RepoName({
 
   return (
     <span
-      className={`text-blue-grey text-opacity-25 text-xs3 tracking-wide font-mono flex items-center ${className}`}
+      className={`text-blue-grey text-opacity-25 text-xxs font-mono flex items-center ${className}`}
       {...rest}
     >
       {isOrg ? (

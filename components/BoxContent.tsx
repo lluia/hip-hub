@@ -5,7 +5,7 @@ type BoxContentProps = React.HTMLAttributes<HTMLDivElement>
 export function BoxContent({ className, ...rest }: BoxContentProps) {
   return (
     <div
-      className={` bg-white p-8 shadow rounded relative ${className}`}
+      className={`p-8 bg-white shadow-xl rounded relative flex flex-col ${className}`}
       {...rest}
     />
   )

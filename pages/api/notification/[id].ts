@@ -6,21 +6,21 @@ const route = buildAutRoute(async (token: string, ctx: FetchContext) => {
     query: { id },
   } = ctx.req
 
-  const threadResponse = await fetch(`${apiBase}/notifications/threads/${id}`, {
+  const response = await fetch(`${apiBase}/notifications/threads/${id}`, {
     headers: {
       Authorization: `token ${token}`,
     },
   })
 
-  const releaseThread = await threadResponse.json()
+  const thread = await response.json()
 
-  const release = await fetch(releaseThread.subject.url, {
+  const notification = await fetch(thread.subject.url, {
     headers: {
       Authorization: `token ${token}`,
     },
   })
 
-  return release
+  return notification
 })
 
 export default route

@@ -13,7 +13,7 @@ export function Link({ className, onPress, ...props }: LinkProps) {
 
   return (
     <a
-      className={`text-link cursor-pointer ${className}`}
+      className={`cursor-pointer text-action ${className}`}
       onClick={onPress ? handleClick : undefined}
       {...props}
     />

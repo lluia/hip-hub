@@ -8,10 +8,10 @@ import {
 import { css } from 'emotion'
 import { faDownload, faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from './Link'
 import { Button } from './Button'
+import { Link } from './Link'
 
-interface DownloadPopoverProps {
+interface DownloadPopoverProps extends React.HTMLAttributes<HTMLButtonElement> {
   zip: string
   tar: string
 }
@@ -25,12 +25,12 @@ const popoverStyle = css`
   }
 `
 
-export function DownloadPopover({ zip, tar }: DownloadPopoverProps) {
+export function DownloadPopover({ zip, tar, ...rest }: DownloadPopoverProps) {
   const popover = usePopoverState()
 
   return (
     <>
-      <PopoverDisclosure {...popover}>
+      <PopoverDisclosure {...popover} {...rest}>
         <Button variant="neutral" size="s">
           <FontAwesomeIcon
             icon={faDownload}

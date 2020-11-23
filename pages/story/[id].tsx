@@ -1,11 +1,12 @@
-import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useRouter } from 'next/router'
+import formatRelative from 'date-fns/formatRelative'
 import useSWR from 'swr'
-import { Back, Heading, Loading, PageWrap } from '../../components'
+import { Author, DetailHeader, Loading, PageWrap } from '../../components'
 
 export default function Story() {
   const router = useRouter()
-  const { data } = useSWR(`/api/release/${router.query.id}`)
+  const { data } = useSWR(`/api/notification/${router.query.id}`)
   console.log(data)
   return (
     <PageWrap>
@@ -13,12 +14,23 @@ export default function Story() {
         <Loading />
       ) : (
         <>
-          <div className="flex flex-row justify-center items-center relative">
-            <Back className="absolute left-0 top-0 mt-3" />
-            <div className="flex flex-row">
-              <Heading as="h1" size="h3" className="mb-0 mr-4 w-3/4 mx-auto">
-                {data.title}
-              </Heading>
+          <DetailHeader>
+            <DetailHeader.Title>{data.title}</DetailHeader.Title>
+          </DetailHeader>
+          <div className="flex flex-row justify-center items-center text-sm relative mt-6">
+            <div className="flex flex-row items-center">
+              <Author
+                name={data?.user?.login}
+                avatar={data?.user?.avatar_url}
+                href={data?.user?.url}
+                className="mr-1"
+              />
+              <span>
+                created this on{' '}
+                {formatRelative(new Date(data?.created_at), Date.now(), {
+                  weekStartsOn: 1,
+                })}
+              </span>
             </div>
           </div>
         </>

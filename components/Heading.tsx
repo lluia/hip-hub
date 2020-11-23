@@ -8,9 +8,9 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 const tagToStyleMap: { [k in HeadingProps['as']]: string } = {
-  h1: 'text-5xl leading-tight font-bold font-display',
-  h2: 'text-4xl leading-tight font-bold font-display',
-  h3: 'text-3xl leading-tight font-bold font-display',
+  h1: 'text-5xl leading-tight tracking-tight font-bold font-display',
+  h2: 'text-4xl leading-tight font-bold tracking-tight font-display',
+  h3: 'text-3xl leading-tight font-bold tracking-tight font-display',
   h4: 'text-2xl leading-snug font-bold font-display',
   h5: 'text-lg leading-snug font-bold font-display',
   h6: 'text-base leading-snug font-bold font-display',

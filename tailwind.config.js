@@ -17,6 +17,8 @@ const systemFontStack = [
 ]
 
 module.exports = {
+  purge: ['./**/*.tsx'],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       sm: '500px',
@@ -172,6 +174,9 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {},
+  },
   plugins: [
     plugin(({ addUtilities }) => {
       addUtilities({
@@ -183,5 +188,4 @@ module.exports = {
       })
     }),
   ],
-  purge: ['./**/*.tsx'],
 }

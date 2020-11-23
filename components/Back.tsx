@@ -10,7 +10,7 @@ export function Back({ className, ...rest }: BackProps) {
   const router = useRouter()
   return (
     <Link
-      className={`absolute left-0 top-0 mt-3 text-aux-purple ${className}`}
+      className={`text-action whitespace-nowrap text-sm ${className}`}
       onPress={router.back}
       {...rest}
     >

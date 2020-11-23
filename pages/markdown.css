@@ -6,7 +6,7 @@
 .markdown-block p,
 .markdown-block ul {
   @apply mb-4;
-  @apply text-sm;
+  @apply text-base;
 }
 
 .markdown-block ul li {
@@ -21,8 +21,8 @@
 .markdown-block code {
   @apply font-mono;
   @apply text-xxs;
-  @apply bg-dark;
-  @apply text-white;
+  @apply bg-black;
+  @apply text-grey;
   @apply py-1;
   @apply px-2;
   @apply rounded-sm;
@@ -50,8 +50,10 @@
   @apply font-bold;
   @apply mb-4;
   @apply pb-1;
-  @apply border-near-grey;
-  @apply border-b;
+  @apply border-b-4;
+  @apply border-aux-yellow;
+  @apply border-opacity-20;
+  @apply w-max;
 }
 
 .markdown-block h5,
