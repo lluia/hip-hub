@@ -45,31 +45,31 @@ export function mapVariant(variant: string) {
   switch (variant) {
     case NOTIFICATION_VARIANTS.PR:
       return {
-        color: 'text-aux-purple',
+        color: 'text-berry',
         text: 'Pull Request',
         icon: <FontAwesomeIcon icon={faCodeBranch} />,
       }
     case NOTIFICATION_VARIANTS.Story:
       return {
-        color: 'text-aux-blue',
+        color: 'text-deepsea',
         text: 'Story',
         icon: <FontAwesomeIcon icon={faFlag} />,
       }
     case NOTIFICATION_VARIANTS.Release:
       return {
-        color: 'text-aux-yellow',
+        color: 'text-orange',
         text: 'Release',
         icon: <FontAwesomeIcon icon={faBong} />,
       }
     case NOTIFICATION_VARIANTS.Commit:
       return {
-        color: 'text-dark',
+        color: 'text-near-black',
         text: 'Commit',
         icon: <FontAwesomeIcon icon={faBahai} />,
       }
     case NOTIFICATION_VARIANTS.Discussion:
       return {
-        color: 'text-aux-green',
+        color: 'text-matcha',
         text: 'Discussion',
         icon: <FontAwesomeIcon icon={faComments} />,
       }

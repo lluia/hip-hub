@@ -51,7 +51,7 @@ export default function Release() {
                     className="mr-1"
                   />
                   <span>
-                    released this on{' '}
+                    released this{' '}
                     {formatRelative(new Date(data?.published_at), Date.now(), {
                       weekStartsOn: 1,
                     })}

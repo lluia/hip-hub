@@ -21,8 +21,8 @@
 .markdown-block code {
   @apply font-mono;
   @apply text-xxs;
-  @apply bg-black;
-  @apply text-grey;
+  @apply bg-grey-light-x2;
+  @apply text-black;
   @apply py-1;
   @apply px-2;
   @apply rounded-sm;
@@ -51,7 +51,7 @@
   @apply mb-4;
   @apply pb-1;
   @apply border-b-4;
-  @apply border-aux-yellow;
+  @apply border-sunrise;
   @apply border-opacity-20;
   @apply w-max;
 }
@@ -64,5 +64,5 @@
 }
 
 .markdown-block a {
-  @apply text-link;
+  @apply text-action;
 }

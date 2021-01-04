@@ -9,7 +9,7 @@ interface NotificationFiltersProps {
 
 const FilterLabel: React.FC = ({ children }) => {
   return (
-    <label className="text-xs text-dark mr-5 cursor-pointer select-none">
+    <label className="text-xs text-black mr-5 cursor-pointer select-none">
       {children}
     </label>
   )

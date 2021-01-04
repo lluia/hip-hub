@@ -26,11 +26,14 @@ export default function Home() {
       ) : error ? (
         <div>Ups we had an issue loading your notifications...</div>
       ) : (
-        <div data-testid="NOTIFICATION_FEED">
+        <div
+          className="mx-auto max-w-screen-ml"
+          data-testid="NOTIFICATION_FEED"
+        >
           {notifications.length ? (
             <>
               <div className="flex justify-between items-baseline">
-                <span className="text-xs text-dark">Filter by:</span>
+                <span className="text-xs text-black">Filter by:</span>
                 <NotificationFilters onSelect={setActiveFilters} />
               </div>
               <ul>

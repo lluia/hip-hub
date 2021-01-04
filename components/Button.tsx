@@ -10,8 +10,8 @@ const baseStyle = 'rounded font-bold cursor-pointer'
 
 const styleMap = {
   primary: `${baseStyle} bg-action-gradient text-white`,
-  neutral: `${baseStyle} bg-near-grey text-black border-none shadow-xs`,
-  text: `text-link`,
+  neutral: `${baseStyle} bg-grey-light text-black border-none shadow-xs`,
+  text: `text-action`,
 }
 
 const sizeMap = {

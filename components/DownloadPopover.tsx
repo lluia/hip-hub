@@ -54,7 +54,7 @@ export function DownloadPopover({ zip, tar, ...rest }: DownloadPopoverProps) {
             <FontAwesomeIcon
               icon={faFileArchive}
               aria-label="download icon"
-              className="text-sm mr-2 text-link"
+              className="text-sm mr-2 text-action"
             />
             Zip
           </Link>
@@ -65,7 +65,7 @@ export function DownloadPopover({ zip, tar, ...rest }: DownloadPopoverProps) {
             <FontAwesomeIcon
               icon={faFileArchive}
               aria-label="download icon"
-              className="text-sm mr-2 text-link"
+              className="text-sm mr-2 text-action"
             />
             Tar
           </Link>
