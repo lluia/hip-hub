@@ -57,9 +57,7 @@ export default function Home() {
                           <span className="ml-5 inline-block">{title}</span>
                         </Card.Title>
                         <Card.Content>
-                          <RepoName owner={owner}>
-                            {`${owner.login} / ${name}`}
-                          </RepoName>
+                          <RepoName owner={owner}>{`${name}`}</RepoName>
                         </Card.Content>
                       </Card>
                     </li>

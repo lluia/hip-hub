@@ -9,14 +9,14 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
 const baseStyle = 'rounded font-bold cursor-pointer'
 
 const styleMap = {
-  primary: `${baseStyle} bg-action-gradient text-white`,
-  neutral: `${baseStyle} bg-grey-light text-black border-none shadow-xs`,
+  primary: `${baseStyle} bg-black text-white`,
+  neutral: `${baseStyle} bg-grey-light-x2 text-black border-none shadow-xs`,
   text: `text-action`,
 }
 
 const sizeMap = {
-  m: 'py-2 px-5 text-sm',
-  s: 'py-1 px-3 text-sm',
+  m: 'py-3 px-5 text-sm',
+  s: 'py-2 px-3 text-sm',
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

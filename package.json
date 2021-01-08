@@ -13,7 +13,8 @@
     "format": "prettier -l --write \"**/*.{ts,tsx,md}\"",
     "test-unit": "jest --watch --testPathPattern components",
     "test-int": "start-server-and-test dev http://localhost:3000 cy:open",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "brand:docs": "tailwind-config-viewer"
   },
   "author": "Lluis Agusti <hi@llu.lu>",
   "license": "MIT",
@@ -25,6 +26,8 @@
     "cookie": "^0.4.1",
     "date-fns": "^2.16.1",
     "emotion": "^10.0.27",
+    "github-markdown-css": "^4.0.0",
+    "highlight.js": "^10.5.0",
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -64,6 +67,7 @@
     "prettier": "^2.1.2",
     "react-test-renderer": "^17.0.1",
     "start-server-and-test": "^1.11.5",
+    "tailwind-config-viewer": "^1.4.0",
     "typescript": "^3.9.7"
   },
   "browserslist": [

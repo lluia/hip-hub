@@ -2,13 +2,13 @@ import * as React from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
+import { DownloadPopover } from '../../features/release'
 import {
   PageWrap,
   Author,
   Loading,
   Markdown,
   BoxContent,
-  DownloadPopover,
   Badge,
   DetailHeader,
 } from '../../components'
@@ -51,7 +51,7 @@ export default function Release() {
                     className="mr-1"
                   />
                   <span>
-                    released this{' '}
+                    made this release{' '}
                     {formatRelative(new Date(data?.published_at), Date.now(), {
                       weekStartsOn: 1,
                     })}

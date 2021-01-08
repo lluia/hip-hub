@@ -24,7 +24,7 @@ export function RepoName({
       {isOrg ? (
         <img
           src={avatar_url}
-          className="rounded-full w-3 inline-block mr-2 opacity-50"
+          className="rounded-full w-5 inline-block mr-2 opacity-50"
           data-testid="ORG_AVATAR"
         />
       ) : (

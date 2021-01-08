@@ -8,8 +8,8 @@ import {
 import { css } from 'emotion'
 import { faDownload, faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button } from './Button'
-import { Link } from './Link'
+import { Button } from '../../components/Button'
+import { Link } from '../../components/Link'
 
 interface DownloadPopoverProps extends React.HTMLAttributes<HTMLButtonElement> {
   zip: string
@@ -31,7 +31,7 @@ export function DownloadPopover({ zip, tar, ...rest }: DownloadPopoverProps) {
   return (
     <>
       <PopoverDisclosure {...popover} {...rest}>
-        <Button variant="neutral" size="s">
+        <Button variant="primary" size="s">
           <FontAwesomeIcon
             icon={faDownload}
             aria-label="download icon"
@@ -42,7 +42,7 @@ export function DownloadPopover({ zip, tar, ...rest }: DownloadPopoverProps) {
       </PopoverDisclosure>
       <Popover
         {...popover}
-        className="z-20 bg-white p-4 border border-near-grey flex justify-center rounded w-32 shadow"
+        className="z-20 bg-white p-4 border border-grey-light-x2 flex justify-center rounded w-32 shadow-lg"
         aria-label="Welcome"
       >
         <PopoverArrow {...popover} className={`${popoverStyle}`} />

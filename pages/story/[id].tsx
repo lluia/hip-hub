@@ -2,7 +2,14 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
 import useSWR from 'swr'
-import { Author, DetailHeader, Loading, PageWrap } from '../../components'
+import {
+  Author,
+  BoxContent,
+  DetailHeader,
+  Loading,
+  Markdown,
+  PageWrap,
+} from '../../components'
 
 export default function Story() {
   const router = useRouter()
@@ -33,6 +40,9 @@ export default function Story() {
               </span>
             </div>
           </div>
+          <BoxContent className="mt-16">
+            <Markdown source={data?.body} />
+          </BoxContent>
         </>
       )}
     </PageWrap>

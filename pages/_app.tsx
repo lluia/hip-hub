@@ -7,7 +7,10 @@ import { Loading, Navbar } from '../components'
 import { useSession } from '../hooks'
 import { fetcher } from '../utils'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import 'github-markdown-css/github-markdown.css'
 import './styles.css'
+import hljs from 'highlight.js/lib/core'
+import 'highlight.js/styles/github.css'
 
 /**
  * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above
@@ -16,6 +19,10 @@ config.autoAddCss = false
 
 export default function App({ Component, pageProps }: AppProps) {
   const session = useSession()
+
+  React.useEffect(() => {
+    hljs.initHighlightingOnLoad()
+  }, [])
 
   return (
     <div className="min-h-screen max-w-screen-lg m-auto px-4">
