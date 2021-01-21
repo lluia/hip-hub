@@ -6,11 +6,12 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import { Loading, Navbar } from '../components'
 import { useSession } from '../hooks'
 import { fetcher } from '../utils'
+import hljs from 'highlight.js/lib/core'
+import 'reset-css/reset.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import 'github-markdown-css/github-markdown.css'
-import './styles.css'
-import hljs from 'highlight.js/lib/core'
 import 'highlight.js/styles/github.css'
+import './styles.css'
 
 /**
  * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above

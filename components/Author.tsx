@@ -5,15 +5,25 @@ import type { LinkProps } from './'
 interface AuthorProps extends LinkProps {
   avatar: string
   name: string
+  size?: 'base' | 'small'
 }
 
-export function Author({ avatar, name, href, className }: AuthorProps) {
+export function Author({
+  avatar,
+  name,
+  href,
+  size = 'base',
+  className,
+}: AuthorProps) {
+  const avatarSize = size === 'small' ? 'w-4' : 'w-8'
+  const textSize = size === 'small' ? 'text-sm' : 'text-base'
+
   return (
     <Link
-      className={`inline-flex items-center ml-3  text-black font-extrabold ${className}`}
+      className={`inline-flex items-center text-black font-extrabold ${textSize} ${className}`}
       href={href}
     >
-      <img src={avatar} className="rounded-full w-8 mr-2" />
+      <img src={avatar} className={`rounded-full ${avatarSize} mr-2`} />
       {name}
     </Link>
   )

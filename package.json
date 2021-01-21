@@ -33,6 +33,7 @@
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
     "reakit": "^1.2.5",
+    "reset-css": "^5.0.1",
     "swr": "^0.3.9",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },

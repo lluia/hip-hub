@@ -8,7 +8,7 @@ import {
   Author,
   Loading,
   Markdown,
-  BoxContent,
+  Box,
   Badge,
   DetailHeader,
 } from '../../components'
@@ -33,7 +33,9 @@ export default function Release() {
       ) : (
         <>
           <DetailHeader>
-            <DetailHeader.Title>{releaseName}</DetailHeader.Title>
+            <DetailHeader.Title className="mr-3">
+              {releaseName}
+            </DetailHeader.Title>
             {releaseType === 'draft' ? (
               <Badge variant="success">Draft</Badge>
             ) : releaseType === 'beta' ? (
@@ -58,14 +60,14 @@ export default function Release() {
                   </span>
                 </div>
               </div>
-              <BoxContent className="mt-16">
+              <Box className="mt-16">
                 <DownloadPopover
                   zip={data?.zipball_url}
                   tar={data?.tarball_url}
                   className="self-end"
                 />
                 <Markdown source={data?.body} />
-              </BoxContent>
+              </Box>
             </>
           ) : null}
         </>
