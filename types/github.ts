@@ -1,3 +1,5 @@
+import { CommentAssociationVariant } from '../features/comments'
+
 export interface GithubNotifications {
   [key: string]: GithubNotification
 }
@@ -19,11 +21,21 @@ export interface GithubNotificationSubject {
 export interface GithubNotificationRepository {
   id: number
   name: string
-  owner: GithubNotificationRepositoryOwner
+  owner: GithubUser
 }
 
-export interface GithubNotificationRepositoryOwner {
+export interface GithubUser {
   type: 'Organization' | 'User'
   avatar_url?: string
   login: string
+  url: string
+}
+
+export interface GithubStoryPayload {
+  author_association: CommentAssociationVariant
+  created_at: string
+  title: string
+  comments: number
+  body: string
+  user: GithubUser
 }

@@ -60,7 +60,7 @@ export function useSession() {
   React.useEffect(() => {
     if (signInRedirect) router.replace('/sign-in')
     if (homeRedirect) router.replace('/')
-  }, [signInRedirect, homeRedirect])
+  }, [signInRedirect, homeRedirect, router])
 
   return {
     user: session.user,

@@ -3,8 +3,8 @@ import { Link } from './'
 import type { LinkProps } from './'
 
 interface AuthorProps extends LinkProps {
-  avatar: string
   name: string
+  avatar?: string
   size?: 'base' | 'small'
 }
 
@@ -23,8 +23,10 @@ export function Author({
       className={`inline-flex items-center text-black font-extrabold ${textSize} ${className}`}
       href={href}
     >
-      <img src={avatar} className={`rounded-full ${avatarSize} mr-2`} />
-      {name}
+      {avatar && (
+        <img src={avatar} className={`rounded-full ${avatarSize} mr-2`} />
+      )}
+      <span>{name}</span>
     </Link>
   )
 }

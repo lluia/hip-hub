@@ -8,9 +8,10 @@ type BackProps = React.HTMLAttributes<HTMLAnchorElement>
 
 export function Back({ className, ...rest }: BackProps) {
   const router = useRouter()
+
   return (
     <Link
-      className={`text-action whitespace-nowrap text-sm ${className}`}
+      className={`text-black font-bold whitespace-nowrap text-sm ${className}`}
       onPress={router.back}
       {...rest}
     >

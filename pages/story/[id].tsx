@@ -2,7 +2,9 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
 import format from 'date-fns/format'
+import parseISO from 'date-fns/parseISO'
 import useSWR from 'swr'
+import { AssociationLabel } from '../../features/comments'
 import {
   Author,
   Box,
@@ -12,10 +14,25 @@ import {
   Markdown,
   PageWrap,
 } from '../../components'
+import type { GithubStoryPayload } from '../../types'
 
 export default function Story() {
   const router = useRouter()
-  const { data } = useSWR(`/api/notification/${router.query.id}`)
+
+  const { data } = useSWR<GithubStoryPayload>(
+    `/api/notification/${router.query.id}`
+  )
+  const retrievedDate = data?.created_at ? parseISO(data?.created_at) : ''
+
+  const creationDate = retrievedDate
+    ? format(retrievedDate, 'do MMMM yyyy')
+    : ''
+
+  const creationDateRelative = retrievedDate
+    ? formatRelative(retrievedDate, Date.now(), {
+        weekStartsOn: 1,
+      })
+    : ''
 
   console.log(data)
 
@@ -36,10 +53,10 @@ export default function Story() {
               className="mr-1"
             />
             <span>
-              • {format(new Date(data?.created_at), 'do MMMM yyyy')} •{' '}
-              {!data?.comments
+              • {creationDate} •{' '}
+              {!data?.comments || data?.comments === 0
                 ? 'No comments'
-                : data?.comments.length > 1
+                : data?.comments === 1
                 ? '1 comment'
                 : `${data?.comments} comments`}
             </span>
@@ -47,17 +64,20 @@ export default function Story() {
           <Box
             className="mt-16"
             renderHeader={() => (
-              <span className="text-sm flex items-center">
+              <span className="text-sm flex items-baseline">
                 <Author
                   name={data?.user?.login}
                   avatar={data?.user?.avatar_url}
                   href={data?.user?.url}
                   className="mr-1"
                   size="small"
-                />{' '}
-                <span>
-                  commented{' '}
-                  {formatRelative(new Date(data?.created_at), new Date())}
+                />
+                <AssociationLabel
+                  variant={data?.author_association}
+                  className="mx-2"
+                />
+                <span className="text-grey">
+                  commented {creationDateRelative}
                 </span>
                 <Emoji aria-label="chat emoji">💭</Emoji>
               </span>
