@@ -30,7 +30,7 @@ export function buildAutRoute(fetcher: Fetcher) {
       const response = await fetcher(session.token, { req, res })
       const data = await response.json()
 
-      res.statusCode = 200
+      res.statusCode = response.status
       res.send(JSON.stringify(data))
     } catch (e) {
       res.statusCode = 500
