@@ -1,8 +1,8 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
+name: "Story \U0001F4D4"
+about: Describe your proposed feature
 title: ''
-labels: ''
+labels: enhancement
 assignees: lluia
 
 ---

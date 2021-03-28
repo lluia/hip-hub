@@ -1,5 +1,5 @@
 ---
-name: Refactor
+name: "Refactor \U0001F4D0"
 about: Describe your desired code changes here.
 title: ''
 labels: refactor

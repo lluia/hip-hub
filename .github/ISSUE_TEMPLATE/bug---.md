@@ -1,5 +1,5 @@
 ---
-name: Bug
+name: "Bug \U0001FAB3"
 about: Describe the problem
 title: ''
 labels: bug
