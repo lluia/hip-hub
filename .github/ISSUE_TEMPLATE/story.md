@@ -1,8 +1,8 @@
 ---
 name: Story
-about: Describe a feautre, bug or task.
+about: Describe your proposed feature
 title: ''
-labels: ''
+labels: enhancement
 assignees: lluia
 
 ---
