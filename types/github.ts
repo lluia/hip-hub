@@ -1,4 +1,4 @@
-import { CommentAssociationVariant } from '../features/comments'
+import { CommentAssociationVariant } from '../modules/comments'
 
 export interface GithubNotifications {
   [key: string]: GithubNotification

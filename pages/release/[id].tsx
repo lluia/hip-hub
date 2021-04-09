@@ -2,7 +2,7 @@ import * as React from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
-import { DownloadPopover } from '../../features/release'
+import { DownloadDropdown } from '../../modules/release'
 import {
   PageWrap,
   Author,
@@ -61,7 +61,7 @@ export default function Release() {
                 </div>
               </div>
               <Box className="mt-16">
-                <DownloadPopover
+                <DownloadDropdown
                   zip={data?.zipball_url}
                   tar={data?.tarball_url}
                   className="self-end"

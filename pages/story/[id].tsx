@@ -4,7 +4,7 @@ import formatRelative from 'date-fns/formatRelative'
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 import useSWR from 'swr'
-import { AssociationLabel } from '../../features/comments'
+import { AssociationLabel } from '../../modules/comments'
 import {
   Author,
   Box,
