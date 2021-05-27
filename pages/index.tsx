@@ -2,22 +2,24 @@ import * as React from 'react'
 import useSWR from 'swr'
 import {
   Card,
-  NotificationVariant,
+  NotificationLabel,
   RepoName,
   Loading,
   PageWrap,
   NotificationFilters,
 } from '../components'
-import type { NotificationVariant as NotificationVariantType } from '../constants'
+import { NOTIFICATION_VARIANT } from '../constants'
 import { parseNotifications, getNotificationPath } from '../utils'
 
 export default function Home() {
   const [activeFilters, setActiveFilters] = React.useState<
-    NotificationVariantType[]
+    NOTIFICATION_VARIANT[]
   >()
 
   const { data, error } = useSWR('/api/notifications')
   const notifications = parseNotifications(data, activeFilters)
+  const onSelectFilter = (activeFilters: NOTIFICATION_VARIANT[]) =>
+    setActiveFilters(activeFilters)
 
   return (
     <PageWrap>
@@ -32,10 +34,7 @@ export default function Home() {
         >
           {notifications.length ? (
             <>
-              <div className="flex justify-between items-baseline">
-                <span className="text-xs text-black">Filter by:</span>
-                <NotificationFilters onSelect={setActiveFilters} />
-              </div>
+              <NotificationFilters onSelect={onSelectFilter} />
               <ul>
                 {notifications.map(
                   ({
@@ -53,7 +52,7 @@ export default function Home() {
                           size="h6"
                           className="flex items-baseline"
                         >
-                          <NotificationVariant>{type}</NotificationVariant>
+                          <NotificationLabel>{type}</NotificationLabel>
                           <span className="ml-5 inline-block">{title}</span>
                         </Card.Title>
                         <Card.Content>

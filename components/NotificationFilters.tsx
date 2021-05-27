@@ -1,85 +1,72 @@
 import * as React from 'react'
-import { useCheckboxState, Checkbox, CheckboxProps } from 'reakit/Checkbox'
-import { css } from 'emotion'
-import { NotificationVariant, NOTIFICATION_VARIANTS } from '../constants'
+import { useState } from 'react'
+import { mapVariant, NOTIFICATION_VARIANT } from '../constants'
 
-interface NotificationFiltersProps {
-  onSelect(state: NotificationVariant[]): void
+type Props = {
+  onSelect(state: NOTIFICATION_VARIANT[]): void
 }
 
-const FilterLabel: React.FC = ({ children }) => {
+interface FilterProps extends React.HTMLAttributes<HTMLButtonElement> {
+  variant: NOTIFICATION_VARIANT
+}
+
+const Filter: React.FC<FilterProps> = ({ children, variant, ...rest }) => {
+  const variantType = mapVariant(variant)
+
   return (
-    <label className="text-xs text-black mr-5 cursor-pointer select-none">
+    <button
+      className={`text-xs text-white mr-5 cursor-pointer select-none bg-${variantType?.color} py-1 px-3 rounded`}
+      {...rest}
+    >
       {children}
-    </label>
+    </button>
   )
 }
 
-const FilterCheck: React.FC<CheckboxProps> = (props) => {
-  return (
-    <Checkbox
-      {...props}
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      className={`bg-white border border-grey rounded shadow-inner mr-1 cursor-pointer ${checkBoxResetStyle}`}
-    />
-  )
-}
-
-export function NotificationFilters({ onSelect }: NotificationFiltersProps) {
-  const checkbox = useCheckboxState({ state: [] })
-  const checkboxState = checkbox.state as NotificationVariant[]
+export function NotificationFilters({ onSelect }: Props) {
+  const [selected, setSelected] = useState<NOTIFICATION_VARIANT[]>([])
+  const setSelectedFilters = (filter: NOTIFICATION_VARIANT) =>
+    setSelected(selected.concat([filter]))
 
   React.useEffect(() => {
-    onSelect(checkboxState)
-  }, [checkboxState, onSelect])
+    if (selected) onSelect(selected)
+  }, [selected, onSelect])
 
   return (
-    <div className="flex flex-row my-4">
-      <FilterLabel>
-        <FilterCheck {...checkbox} value={NOTIFICATION_VARIANTS.PR} />
-        PR
-      </FilterLabel>
-      <FilterLabel>
-        <FilterCheck {...checkbox} value={NOTIFICATION_VARIANTS.Story} />
-        Story
-      </FilterLabel>
-      <FilterLabel>
-        <FilterCheck {...checkbox} value={NOTIFICATION_VARIANTS.Release} />
-        Release
-      </FilterLabel>
-      <FilterLabel>
-        <FilterCheck {...checkbox} value={NOTIFICATION_VARIANTS.Discussion} />
-        Discussion
-      </FilterLabel>
-      <FilterLabel>
-        <FilterCheck {...checkbox} value={NOTIFICATION_VARIANTS.Commit} />
-        Commit
-      </FilterLabel>
+    <div className="flex items-center justify-center">
+      <span className="text-sm text-grey">Filter by:</span>
+      <div className="flex flex-row my-4 ml-4">
+        <Filter
+          variant={NOTIFICATION_VARIANT.PR}
+          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.PR)}
+        >
+          PR
+        </Filter>
+        <Filter
+          variant={NOTIFICATION_VARIANT.Story}
+          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Story)}
+        >
+          Story
+        </Filter>
+        <Filter
+          variant={NOTIFICATION_VARIANT.Release}
+          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Release)}
+        >
+          Release
+        </Filter>
+        <Filter
+          variant={NOTIFICATION_VARIANT.Discussion}
+          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Discussion)}
+        >
+          Discussion
+        </Filter>
+        <Filter
+          variant={NOTIFICATION_VARIANT.Commit}
+          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Commit)}
+        >
+          Commit
+        </Filter>
+      </div>
     </div>
   )
 }
-
-const checkBoxResetStyle = css`
-  width: 15px;
-  height: 15px;
-  appearance: none;
-  outline: none;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  &:after {
-    content: '';
-    width: 65%;
-    height: 60%;
-    opacity: 0;
-    background-color: grey;
-    transition: 0.1s ease opacity;
-    border-radius: 2px;
-  }
-  &:checked {
-    &:after {
-      opacity: 1;
-    }
-  }
-`

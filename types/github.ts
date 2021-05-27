@@ -1,3 +1,4 @@
+import { NOTIFICATION_VARIANT } from '../constants'
 import { CommentAssociationVariant } from '../modules/comments'
 
 export interface GithubNotifications {
@@ -15,7 +16,7 @@ export interface GithubNotification {
 export interface GithubNotificationSubject {
   title: string
   url: string
-  type: 'PullRequest' | 'Issue' | 'Release'
+  type: NOTIFICATION_VARIANT
 }
 
 export interface GithubNotificationRepository {
