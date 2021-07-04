@@ -8,14 +8,22 @@ type Props = {
 
 interface FilterProps extends React.HTMLAttributes<HTMLButtonElement> {
   variant: NOTIFICATION_VARIANT
+  isActive: boolean
 }
 
-const Filter: React.FC<FilterProps> = ({ children, variant, ...rest }) => {
+const Filter: React.FC<FilterProps> = ({
+  children,
+  variant,
+  isActive,
+  ...rest
+}) => {
   const variantType = mapVariant(variant)
 
   return (
     <button
-      className={`text-xs text-white mr-5 cursor-pointer select-none bg-${variantType?.color} py-1 px-3 rounded`}
+      className={`text-xs text-white mr-5 cursor-pointer select-none bg-${
+        variantType?.color
+      } ${isActive ? '' : 'opacity-20'} py-1 px-3 rounded`}
       {...rest}
     >
       {children}
@@ -25,8 +33,15 @@ const Filter: React.FC<FilterProps> = ({ children, variant, ...rest }) => {
 
 export function NotificationFilters({ onSelect }: Props) {
   const [selected, setSelected] = useState<NOTIFICATION_VARIANT[]>([])
-  const setSelectedFilters = (filter: NOTIFICATION_VARIANT) =>
-    setSelected(selected.concat([filter]))
+  const noneSelected = selected.length === 0
+
+  const handleFilterSelect = (filter: NOTIFICATION_VARIANT) => {
+    if (selected.includes(filter)) {
+      setSelected(selected.filter((el: NOTIFICATION_VARIANT) => el !== filter))
+    } else {
+      setSelected(selected.concat([filter]))
+    }
+  }
 
   React.useEffect(() => {
     if (selected) onSelect(selected)
@@ -38,31 +53,44 @@ export function NotificationFilters({ onSelect }: Props) {
       <div className="flex flex-row my-4 ml-4">
         <Filter
           variant={NOTIFICATION_VARIANT.PR}
-          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.PR)}
+          onClick={() => handleFilterSelect(NOTIFICATION_VARIANT.PR)}
+          isActive={selected.includes(NOTIFICATION_VARIANT.PR) || noneSelected}
         >
           PR
         </Filter>
         <Filter
           variant={NOTIFICATION_VARIANT.Story}
-          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Story)}
+          onClick={() => handleFilterSelect(NOTIFICATION_VARIANT.Story)}
+          isActive={
+            selected.includes(NOTIFICATION_VARIANT.Story) || noneSelected
+          }
         >
           Story
         </Filter>
         <Filter
           variant={NOTIFICATION_VARIANT.Release}
-          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Release)}
+          onClick={() => handleFilterSelect(NOTIFICATION_VARIANT.Release)}
+          isActive={
+            selected.includes(NOTIFICATION_VARIANT.Release) || noneSelected
+          }
         >
           Release
         </Filter>
         <Filter
           variant={NOTIFICATION_VARIANT.Discussion}
-          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Discussion)}
+          onClick={() => handleFilterSelect(NOTIFICATION_VARIANT.Discussion)}
+          isActive={
+            selected.includes(NOTIFICATION_VARIANT.Discussion) || noneSelected
+          }
         >
           Discussion
         </Filter>
         <Filter
           variant={NOTIFICATION_VARIANT.Commit}
-          onClick={() => setSelectedFilters(NOTIFICATION_VARIANT.Commit)}
+          onClick={() => handleFilterSelect(NOTIFICATION_VARIANT.Commit)}
+          isActive={
+            selected.includes(NOTIFICATION_VARIANT.Commit) || noneSelected
+          }
         >
           Commit
         </Filter>
