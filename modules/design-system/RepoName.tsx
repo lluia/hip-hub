@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { GithubNotificationRepositoryOwner } from '../../types/github'
+import { GithubUser } from '../../types/github'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
 
 interface RepoNameProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: string
-  owner: GithubNotificationRepositoryOwner
+  owner: GithubUser
 }
 
 export function RepoName({
@@ -26,6 +26,7 @@ export function RepoName({
           src={avatar_url}
           className="rounded-full w-5 inline-block mr-2 opacity-50"
           data-testid="ORG_AVATAR"
+          alt="Repository avatar"
         />
       ) : (
         <FontAwesomeIcon

@@ -24,7 +24,11 @@ export function Author({
       href={href}
     >
       {avatar && (
-        <img src={avatar} className={`rounded-full ${avatarSize} mr-2`} />
+        <img
+          src={avatar}
+          alt="avatar"
+          className={`rounded-full ${avatarSize} mr-2`}
+        />
       )}
       <span>{name}</span>
     </Link>

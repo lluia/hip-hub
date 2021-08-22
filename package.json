@@ -73,6 +73,7 @@
     "postcss": "^7",
     "prettier": "^2.1.2",
     "react-test-renderer": "^17.0.1",
+    "sass": "^1.38.0",
     "start-server-and-test": "^1.11.5",
     "tailwind-config-viewer": "^1.4.0",
     "typescript": "^3.9.7"

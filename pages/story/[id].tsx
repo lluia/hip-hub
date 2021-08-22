@@ -13,10 +13,10 @@ import {
   PageWrap,
 } from '../../modules/design-system'
 import { useFetchNotification } from '../../queries/useFetchNotification'
+import { MetaBlock } from '../../modules/design-system/MetaBlock/MetaBlock'
 
 export default function Story() {
   const router = useRouter()
-
   const { data } = useFetchNotification(router.query.id as string)
 
   const retrievedDate = data?.created_at ? parseISO(data?.created_at) : ''
@@ -76,10 +76,7 @@ export default function Story() {
               </span>
             )}
           >
-            <div
-              className="markdown"
-              dangerouslySetInnerHTML={{ __html: data?.body }}
-            />
+            <MetaBlock html={data?.body} />
           </Box>
         </>
       )}

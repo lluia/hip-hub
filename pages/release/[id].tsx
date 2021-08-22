@@ -11,6 +11,7 @@ import {
   Badge,
   DetailHeader,
 } from '../../modules/design-system'
+import { MetaBlock } from '../../modules/design-system/MetaBlock/MetaBlock'
 
 export default function Release() {
   const router = useRouter()
@@ -66,7 +67,7 @@ export default function Release() {
                   tar={data?.tarball_url}
                   className="self-end"
                 />
-                <div dangerouslySetInnerHTML={{ __html: data?.body }} />;
+                <MetaBlock html={data?.body} />;
               </Box>
             </>
           ) : null}

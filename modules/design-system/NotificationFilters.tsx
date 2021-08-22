@@ -21,9 +21,11 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <button
-      className={`text-xs text-white mr-5 cursor-pointer select-none bg-${
+      className={`text-xs text-${
         variantType?.color
-      } ${isActive ? '' : 'opacity-20'} py-1 px-3 rounded`}
+      } mr-5 cursor-pointer select-none border-2 border-${variantType?.color} ${
+        isActive ? '' : 'opacity-20'
+      } py-1 px-3 rounded`}
       {...rest}
     >
       {children}
