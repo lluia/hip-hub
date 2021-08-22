@@ -1,16 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react'
 import cxs from 'classnames'
-
-const variantMap = {
-  CONTRIBUTOR: 'contributor',
-  COLLABORATOR: 'collaborator',
-  FIRST_TIMER: 'first timer',
-  FIRST_TIME_CONTRIBUTOR: 'first time contributor',
-  MEMBER: 'member',
-  OWNER: 'owner',
-} as const
-
-export type CommentAssociationVariant = keyof typeof variantMap & 'NONE'
+import { CommentAssociationVariant, variantMap } from '../../types/comments'
 
 interface AssociationLabelProps extends HTMLAttributes<HTMLDivElement> {
   variant: CommentAssociationVariant

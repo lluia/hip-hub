@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Link } from './'
-import type { LinkProps } from './'
+import { Link } from '.'
+import type { LinkProps } from '.'
 
 interface AuthorProps extends LinkProps {
   name: string

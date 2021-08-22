@@ -10,8 +10,8 @@ import {
 } from 'reakit/Popover'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from './Button'
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons'
-import type { ReactChildren } from '../types/react'
+import type { ReactChildren } from '../../types/react'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 type RandomShape = Record<string, unknown>
 type ButtonProps = React.HTMLAttributes<HTMLButtonElement>
@@ -20,7 +20,7 @@ type DropdownStateProps = { state?: PopoverStateReturn }
 
 type DropdownToggleProps = ReactChildren &
   DropdownStateProps &
-  PopoverDisclosureOptions & { icon?: IconDefinition; label?: string }
+  PopoverDisclosureOptions & { icon: IconProp; label?: string }
 
 type DropdownContentProps = ReactChildren & DropdownStateProps
 
@@ -69,8 +69,7 @@ function DropdownToggle({
   icon,
   label,
   ...rest
-}: DropdownToggleProps) {
-  const iconProps = icon || {}
+}: Partial<DropdownToggleProps>) {
   return (
     <PopoverDisclosure {...state} {...rest}>
       {label ? (
@@ -78,7 +77,7 @@ function DropdownToggle({
           <FontAwesomeIcon
             aria-label="download icon"
             className="text-base mr-2"
-            {...iconProps}
+            icon={icon!}
           />
           {label}
         </Button>

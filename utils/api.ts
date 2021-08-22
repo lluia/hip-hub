@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { verify } from 'jsonwebtoken'
-import type { JWTPayload } from '../types/'
+import type { JWTPayload } from '../types'
 
 export interface FetchContext {
   req: NextApiRequest
@@ -39,7 +39,15 @@ export function buildAutRoute(fetcher: Fetcher) {
   }
 }
 
-export const apiBase = 'https://api.github.com'
+export function handleAuth(req: NextApiRequest): JWTPayload | null {
+  try {
+    const { hhSessionToken } = req.cookies
+    return verify(hhSessionToken, process.env.JWT_SECRET!) as JWTPayload
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
 
 export const fetcher = async (
   input: RequestInfo,
@@ -48,4 +56,8 @@ export const fetcher = async (
   const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}${input}`, init)
   const data = res.json()
   return data
+}
+
+export function getUrlPath(url: string) {
+  return url.replace(/^.*\/\/[^\/]+/, '')
 }

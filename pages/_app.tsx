@@ -3,20 +3,20 @@ import Head from 'next/head'
 import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { Loading, Navbar } from '../components'
-import { useSession } from '../hooks'
+import { Loading, Navbar } from '../modules/design-system'
+import { useSession } from '../modules/session'
 import { fetcher } from '../utils'
-import hljs from 'highlight.js/lib/core'
-import 'reset-css/reset.css'
+import hljs from 'highlight.js'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import 'github-markdown-css/github-markdown.css'
-import 'highlight.js/styles/github.css'
 import './styles.css'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 /**
  * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above
  */
 config.autoAddCss = false
+
+const queryClient = new QueryClient()
 
 export default function App({ Component, pageProps }: AppProps) {
   const session = useSession()
@@ -38,9 +38,11 @@ export default function App({ Component, pageProps }: AppProps) {
       {session.validating || session.redirecting ? (
         <Loading />
       ) : (
-        <SWRConfig value={{ fetcher }}>
-          <Component {...pageProps} />
-        </SWRConfig>
+        <QueryClientProvider client={queryClient}>
+          <SWRConfig value={{ fetcher }}>
+            <Component {...pageProps} />
+          </SWRConfig>
+        </QueryClientProvider>
       )}
     </div>
   )

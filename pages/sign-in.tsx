@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading } from '../components'
+import { Heading } from '../modules/design-system'
 
 export default function SignIn() {
   return (

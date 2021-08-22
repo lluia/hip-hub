@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { GithubNotificationRepositoryOwner } from '../types/github'
+import { GithubNotificationRepositoryOwner } from '../../types/github'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube } from '@fortawesome/free-solid-svg-icons'
 

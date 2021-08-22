@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import { fetchUser } from '../api/user'
 
 interface User {
   name: string
@@ -30,14 +31,10 @@ export function useSession() {
     router.pathname === '/sign-in'
 
   React.useEffect(() => {
-    async function fetchUser() {
+    async function fetchSessionStatus() {
       try {
-        const response = await fetch('/api/user')
-
-        if (response.status !== 200) throw new Error('wrong')
-
-        const parsedResponse = await response.json()
-        const { avatar_url: avatar, name } = parsedResponse
+        const response = await fetchUser()
+        const { avatar_url: avatar, name } = response
 
         setSession({
           status: 'verified',
@@ -54,7 +51,7 @@ export function useSession() {
       }
     }
 
-    fetchUser()
+    fetchSessionStatus()
   }, [])
 
   React.useEffect(() => {

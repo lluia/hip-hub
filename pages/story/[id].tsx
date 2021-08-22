@@ -3,25 +3,22 @@ import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
-import useSWR from 'swr'
-import { AssociationLabel } from '../../modules/comments'
+import { AssociationLabel } from '../../modules/design-system'
 import {
   Author,
   Box,
   DetailHeader,
   Emoji,
   Loading,
-  Markdown,
   PageWrap,
-} from '../../components'
-import type { GithubStoryPayload } from '../../types'
+} from '../../modules/design-system'
+import { useFetchNotification } from '../../queries/useFetchNotification'
 
 export default function Story() {
   const router = useRouter()
 
-  const { data } = useSWR<GithubStoryPayload>(
-    `/api/notification/${router.query.id}`
-  )
+  const { data } = useFetchNotification(router.query.id as string)
+
   const retrievedDate = data?.created_at ? parseISO(data?.created_at) : ''
 
   const creationDate = retrievedDate
@@ -33,8 +30,6 @@ export default function Story() {
         weekStartsOn: 1,
       })
     : ''
-
-  console.log(data)
 
   return (
     <PageWrap>
@@ -76,14 +71,15 @@ export default function Story() {
                   variant={data?.author_association}
                   className="mx-2"
                 />
-                <span className="text-grey">
-                  commented {creationDateRelative}
-                </span>
+                <span className="text-grey">– {creationDateRelative}</span>
                 <Emoji aria-label="chat emoji">💭</Emoji>
               </span>
             )}
           >
-            <Markdown source={data?.body} />
+            <div
+              className="markdown"
+              dangerouslySetInnerHTML={{ __html: data?.body }}
+            />
           </Box>
         </>
       )}

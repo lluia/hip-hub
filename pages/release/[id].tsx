@@ -1,21 +1,21 @@
 import * as React from 'react'
-import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
 import { DownloadDropdown } from '../../modules/release'
+import { useFetchNotification } from '../../queries/useFetchNotification'
 import {
   PageWrap,
   Author,
   Loading,
-  Markdown,
   Box,
   Badge,
   DetailHeader,
-} from '../../components'
+} from '../../modules/design-system'
 
 export default function Release() {
   const router = useRouter()
-  const { data } = useSWR(`/api/notification/${router.query.id}`)
+  const { data } = useFetchNotification(router.query.id as string)
+
   const releaseName = data && data.tag_name ? data.tag_name : 'release'
 
   const releaseType = !data
@@ -66,7 +66,7 @@ export default function Release() {
                   tar={data?.tarball_url}
                   className="self-end"
                 />
-                <Markdown source={data?.body} />
+                <div dangerouslySetInnerHTML={{ __html: data?.body }} />;
               </Box>
             </>
           ) : null}

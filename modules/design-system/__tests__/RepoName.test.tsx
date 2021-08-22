@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render, screen } from '@testing-library/react'
-import { RepoName } from '../'
+import { RepoName } from '..'
 
 describe('<RepoName />', () => {
   test('displays the supplied name', () => {

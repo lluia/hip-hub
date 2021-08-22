@@ -22,10 +22,10 @@ export function Navbar({ user, loading }: NavbarProps) {
   return (
     <nav
       className={`flex ${
-        isRootPath ? 'justify-end' : 'justify-between'
+        isRootPath || !user ? 'justify-end' : 'justify-between'
       } items-center py-3 mt-10`}
     >
-      {!isRootPath && <Back />}
+      {!isRootPath && user ? <Back /> : null}
       <div className="pin-center">
         <Link href="/">
           <Logo className="w-12" />
@@ -35,14 +35,18 @@ export function Navbar({ user, loading }: NavbarProps) {
         {loading ? null : user ? (
           <>
             <div className="flex items-center">
-              <img src={user.avatar} className="rounded-full w-6" />
+              <img
+                src={user.avatar}
+                alt="user avatar"
+                className="rounded-full w-6"
+              />
               <span className="inline-block ml-3 text-sm font-italic">
                 <strong>{user.name}</strong>
               </span>
             </div>
-            {/* <Link href="/api/sign-out">
+            <Link href="/api/sign-out">
               <Button>Sign-out</Button>
-            </Link> */}
+            </Link>
           </>
         ) : (
           <Link href="/api/sign-in">

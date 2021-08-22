@@ -1,5 +1,5 @@
-import { NOTIFICATION_VARIANT } from '../constants'
-import { CommentAssociationVariant } from '../modules/comments'
+import { NOTIFICATION_VARIANT } from '../modules/notification'
+import { CommentAssociationVariant } from './comments'
 
 export interface GithubNotifications {
   [key: string]: GithubNotification

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { faDownload, faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link, Dropdown } from '../../components'
-import { PopoverDisclosureProps } from 'reakit/ts'
+import { Link, Dropdown } from '../design-system'
 
-interface DownloadDropdownProps extends PopoverDisclosureProps {
+interface DownloadDropdownProps
+  extends React.HTMLAttributes<HTMLButtonElement> {
   zip: string
   tar: string
 }

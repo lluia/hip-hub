@@ -1,4 +1,5 @@
-import { NotificationVariant } from '../constants'
+import { NOTIFICATION_VARIANT } from '../modules/notification'
+
 import type {
   GithubNotificationSubject,
   GithubNotifications,
@@ -13,7 +14,7 @@ interface ParsedNotification {
 
 function parseNotifications(
   notifications: GithubNotifications | null,
-  filters?: NotificationVariant[]
+  filters?: NOTIFICATION_VARIANT[]
 ) {
   if (!notifications) return null
 

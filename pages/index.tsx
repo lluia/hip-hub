@@ -1,5 +1,4 @@
 import * as React from 'react'
-import useSWR from 'swr'
 import {
   Card,
   NotificationLabel,
@@ -7,8 +6,9 @@ import {
   Loading,
   PageWrap,
   NotificationFilters,
-} from '../components'
-import { NOTIFICATION_VARIANT } from '../constants'
+} from '../modules/design-system'
+import { NOTIFICATION_VARIANT } from '../modules/notification'
+import { useListNotifications } from '../queries/useListNotifications'
 import { parseNotifications, getNotificationPath } from '../utils'
 
 export default function Home() {
@@ -16,10 +16,8 @@ export default function Home() {
     NOTIFICATION_VARIANT[]
   >()
 
-  const { data, error } = useSWR('/api/notifications')
+  const { data, error } = useListNotifications()
   const notifications = parseNotifications(data, activeFilters)
-  const onSelectFilter = (activeFilters: NOTIFICATION_VARIANT[]) =>
-    setActiveFilters(activeFilters)
 
   return (
     <PageWrap>
@@ -34,7 +32,7 @@ export default function Home() {
         >
           {notifications.length ? (
             <>
-              <NotificationFilters onSelect={onSelectFilter} />
+              <NotificationFilters onSelect={setActiveFilters} />
               <ul>
                 {notifications.map(
                   ({
