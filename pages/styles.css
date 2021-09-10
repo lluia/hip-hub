@@ -18,12 +18,3 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
-
-.markdown pre {
-  background-color: rgb(246, 248, 250);
-  border-radius: 6px;
-  font-size: 85%;
-  line-height: 1.45;
-  overflow: auto;
-  padding: 16px;
-}

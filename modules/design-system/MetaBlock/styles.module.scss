@@ -37,6 +37,15 @@
     @apply my-4;
   }
 
+  code {
+    @apply rounded-md;
+    @apply bg-near-white;
+    @apply px-2 py-1;
+    @apply mx-2;
+    @apply inline-block;
+    @apply text-xs;
+  }
+
   pre {
     @apply rounded-lg;
     @apply bg-grey-light-x3;
@@ -45,6 +54,13 @@
     @apply p-4;
     @apply my-2;
     overflow: auto;
+  }
+
+  pre code {
+    @apply p-0;
+    @apply text-sm;
+    @apply bg-near-white;
+    @apply border-none;
   }
 
   p {
