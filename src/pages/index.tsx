@@ -6,15 +6,14 @@ import {
   Loading,
   PageWrap,
   NotificationFilters,
-} from '../modules/design-system'
-import { NOTIFICATION_VARIANT } from '../modules/notification'
+} from '../components'
+import { NOTIFICATION_VARIANT } from '../scenes/notification'
 import { useListNotifications } from '../queries/useListNotifications'
 import { parseNotifications, getNotificationPath } from '../utils'
 
 export default function Home() {
-  const [activeFilters, setActiveFilters] = React.useState<
-    NOTIFICATION_VARIANT[]
-  >()
+  const [activeFilters, setActiveFilters] =
+    React.useState<NOTIFICATION_VARIANT[]>()
 
   const { data, error } = useListNotifications()
   const notifications = parseNotifications(data, activeFilters)

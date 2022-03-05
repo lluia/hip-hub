@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { mapVariant, NOTIFICATION_VARIANT } from '../notification'
+import { mapVariant, NOTIFICATION_VARIANT } from '../scenes/notification'
 
 type Props = {
   onSelect(state: NOTIFICATION_VARIANT[]): void

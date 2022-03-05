@@ -4,7 +4,6 @@ about: Describe your proposed feature
 title: ''
 labels: enhancement
 assignees: lluia
-
 ---
 
 ## Summary 💭

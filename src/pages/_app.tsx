@@ -3,13 +3,13 @@ import Head from 'next/head'
 import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { Loading, Navbar } from '../modules/design-system'
-import { useSession } from '../modules/session'
+import { Loading, Navbar } from '../components'
+import { useSession } from '../scenes/session'
 import { fetcher } from '../utils'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import hljs from 'highlight.js'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import './styles.css'
-import { QueryClient, QueryClientProvider } from 'react-query'
 
 /**
  * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above

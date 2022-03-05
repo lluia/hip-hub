@@ -1,4 +1,4 @@
-import { log } from '../../../services/logger'
+import { log } from '../../logger'
 import { getUrlPath } from '../../../utils'
 import { isFailedRequest } from '../utils'
 

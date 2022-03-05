@@ -4,7 +4,6 @@ about: Describe your desired code changes here.
 title: ''
 labels: refactor
 assignees: lluia
-
 ---
 
 ## Summary 💭

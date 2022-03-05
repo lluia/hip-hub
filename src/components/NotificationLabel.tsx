@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { GithubNotificationSubject } from '../../types/github'
+import { GithubNotificationSubject } from '../types/github'
 import { css } from 'emotion'
-import { mapVariant } from '../notification'
+import { mapVariant } from '../scenes/notification'
 
 interface NotificationVariantProps
   extends React.HTMLAttributes<HTMLSpanElement> {

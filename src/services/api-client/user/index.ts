@@ -1,4 +1,4 @@
-import { log } from '../../../services/logger'
+import { log } from '../../logger'
 import { isFailedRequest } from '../utils'
 
 export async function fetchUser() {

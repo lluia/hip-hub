@@ -10,7 +10,7 @@ import {
 } from 'reakit/Popover'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from './Button'
-import type { ReactChildren } from '../../types/react'
+import type { ReactChildren } from '../types/react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 type RandomShape = Record<string, unknown>

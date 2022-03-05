@@ -34,7 +34,7 @@ export function Navbar({ user, loading }: NavbarProps) {
       <div className="flex justify-between items-center">
         {loading ? null : user ? (
           <>
-            <div className="flex items-center">
+            <div className="flex items-center mr-5">
               <img
                 src={user.avatar}
                 alt="user avatar"
@@ -45,7 +45,7 @@ export function Navbar({ user, loading }: NavbarProps) {
               </span>
             </div>
             <Link href="/api/sign-out">
-              <Button>Sign-out</Button>
+              <Button size="s">Sign-out</Button>
             </Link>
           </>
         ) : (

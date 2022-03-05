@@ -4,7 +4,6 @@ about: Describe the problem
 title: ''
 labels: bug
 assignees: lluia
-
 ---
 
 ## Summary 💭
@@ -21,6 +20,7 @@ assignees: lluia
 # Pase here output of this command
 $  npx envinfo --system --browsers --ides --npmPackages --languages
 ```
+
 ## Notes 📓
 
 <!-- your notes here -->

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { fetchUser } from '../api/user'
+import { fetchUser } from '../../services/api-client/user'
 
 interface User {
   name: string

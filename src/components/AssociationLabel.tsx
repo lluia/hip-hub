@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react'
 import cxs from 'classnames'
-import { CommentAssociationVariant, variantMap } from '../../types/comments'
+import { CommentAssociationVariant, variantMap } from '../types/comments'
 
 interface AssociationLabelProps extends HTMLAttributes<HTMLDivElement> {
   variant: CommentAssociationVariant
