@@ -1,4 +1,4 @@
-import { NOTIFICATION_VARIANT } from '../modules/notification'
+import { NOTIFICATION_VARIANT } from '../services/notification'
 
 import type {
   GithubNotificationSubject,
@@ -42,8 +42,8 @@ function constructDetailPageUrl(url: string, param?: string) {
 
   if (url.includes('issues'))
     return {
-      url: `/story/${param}`,
-      as: `/story/[id]`,
+      url: `/issue/${param}`,
+      as: `/issue/[id]`,
     }
 
   return {

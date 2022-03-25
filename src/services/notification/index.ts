@@ -14,7 +14,7 @@ export enum NOTIFICATION_VARIANT {
   Discussion = 'Discussion',
 }
 
-export function mapVariant(variant: NOTIFICATION_VARIANT) {
+function getVariantTheme(variant: NOTIFICATION_VARIANT) {
   switch (variant) {
     case NOTIFICATION_VARIANT.PR:
       return {
@@ -49,4 +49,8 @@ export function mapVariant(variant: NOTIFICATION_VARIANT) {
     default:
       return null
   }
+}
+
+export default {
+  getVariantTheme,
 }

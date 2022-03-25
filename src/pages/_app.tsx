@@ -1,15 +1,12 @@
 import * as React from 'react'
 import Head from 'next/head'
-import { SWRConfig } from 'swr'
 import type { AppProps } from 'next/app'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { Loading, Navbar } from '../components'
-import { useSession } from '../scenes/session'
-import { fetcher } from '../utils'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import hljs from 'highlight.js'
+import { App as AppScene } from '../scenes/App/App'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import './styles.css'
+import { SessionProvider } from 'next-auth/react'
 
 /**
  * @note Tell Font Awesome to skip adding the CSS automatically since it's being imported above
@@ -18,32 +15,26 @@ config.autoAddCss = false
 
 const queryClient = new QueryClient()
 
-export default function App({ Component, pageProps }: AppProps) {
-  const session = useSession()
-
-  React.useEffect(() => {
-    hljs.initHighlightingOnLoad()
-  }, [])
-
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
-    <div className="min-h-screen max-w-screen-lg m-auto px-4">
+    <>
       <Head>
-        <title>Hip Hub!</title>
+        <title>Meow</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto+Mono:wght@400&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <Navbar user={session.user} loading={session.validating} />
-      {session.validating || session.redirecting ? (
-        <Loading />
-      ) : (
+      <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
-          <SWRConfig value={{ fetcher }}>
+          <AppScene>
             <Component {...pageProps} />
-          </SWRConfig>
+          </AppScene>
         </QueryClientProvider>
-      )}
-    </div>
+      </SessionProvider>
+    </>
   )
 }

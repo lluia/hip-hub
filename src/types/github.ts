@@ -1,4 +1,4 @@
-import { NOTIFICATION_VARIANT } from '../modules/notification'
+import { NOTIFICATION_VARIANT } from '../services/notification'
 import { CommentAssociationVariant } from './comments'
 
 export interface GithubNotifications {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { faDownload, faFileArchive } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link, Dropdown } from '../../components'
+import { Link, Dropdown } from '../../../components'
 
 interface DownloadDropdownProps
   extends React.HTMLAttributes<HTMLButtonElement> {

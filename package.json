@@ -11,8 +11,8 @@
     "types": "tsc --noEmit",
     "lint": "eslint '{pages,utils}/**/*.{ts,tsx}'",
     "format": "prettier -l --write \"**/*.{ts,tsx,md}\"",
-    "test-unit": "jest --watch --testPathPattern components",
-    "test-int": "start-server-and-test dev http://localhost:3000 cy:open",
+    "test:unit": "jest --watch --testPathPattern components",
+    "test:int": "start-server-and-test dev http://localhost:3000 cy:open",
     "cy:open": "cypress open",
     "brand:docs": "tailwind-config-viewer"
   },
@@ -31,13 +31,13 @@
     "github-syntax-dark": "^0.5.0",
     "highlight.js": "^10.5.0",
     "next": "^9.5.3",
+    "next-auth": "^4.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
     "react-query": "^3.19.1",
     "reakit": "^1.2.5",
     "reset-css": "^5.0.1",
-    "swr": "^0.3.9",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   },
   "devDependencies": {

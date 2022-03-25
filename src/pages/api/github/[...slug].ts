@@ -1,13 +1,13 @@
 import httpProxyMiddleware from 'next-http-proxy-middleware'
-import { handleAuth } from '../../../utils'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { getSession } from 'next-auth/react'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const session = handleAuth(req)
+  const session = await getSession({
+    req,
+  })
 
   res.setHeader('Content-Type', 'application/json')
-
-  if (!session) res.status(401).send({ error: 'Client needs authentication' })
 
   return httpProxyMiddleware(req, res, {
     xfwd: true,
@@ -16,7 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       '^/api/github': '/',
     },
     headers: {
-      Authorization: `token ${session?.token}`,
+      Authorization: `token ${session?.accessToken}`,
     },
   })
 }

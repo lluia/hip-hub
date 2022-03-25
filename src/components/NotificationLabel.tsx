@@ -2,7 +2,7 @@ import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GithubNotificationSubject } from '../types/github'
 import { css } from 'emotion'
-import { mapVariant } from '../scenes/notification'
+import notificationService from '../services/notification'
 
 interface NotificationVariantProps
   extends React.HTMLAttributes<HTMLSpanElement> {
@@ -18,7 +18,7 @@ export function NotificationLabel({
   children,
   ...props
 }: NotificationVariantProps) {
-  const actualVariant = mapVariant(children)
+  const actualVariant = notificationService.getVariantTheme(children)
 
   if (!actualVariant) return null
 

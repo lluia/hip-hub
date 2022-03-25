@@ -1,8 +1,7 @@
 import { log } from '../../logger'
-import { getUrlPath } from '../../../utils'
-import { isFailedRequest } from '../utils'
+import { getUrlPath, isFailedRequest } from '../utils'
 
-export async function fetchNotification(id: string) {
+export async function get(id: string) {
   const threadResponse = await fetch(`/api/github/notifications/threads/${id}`)
 
   if (isFailedRequest(threadResponse))
@@ -27,12 +26,12 @@ export async function fetchNotification(id: string) {
     })
 
   const notification = await notificationResponse.json()
-  const markdown = await fetchMarkdown(notification.body, repositoryId)
+  const markdown = await getMarkdown(notification.body, repositoryId)
 
   return { ...notification, body: markdown }
 }
 
-export async function fetchMarkdown(text: string, repoId: string) {
+export async function getMarkdown(text: string, repoId: string) {
   const markdownResponse = await fetch('/api/github/markdown', {
     method: 'POST',
     body: JSON.stringify({
@@ -52,7 +51,7 @@ export async function fetchMarkdown(text: string, repoId: string) {
   return markdown
 }
 
-export async function listNotifications() {
+export async function list() {
   const notificationsResponse = await fetch('/api/github/notifications')
 
   if (isFailedRequest(notificationsResponse))

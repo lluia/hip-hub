@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { mapVariant, NOTIFICATION_VARIANT } from '../scenes/notification'
+import notificationService from '../services/notification'
+import { NOTIFICATION_VARIANT } from '../services/notification'
 
 type Props = {
   onSelect(state: NOTIFICATION_VARIANT[]): void
@@ -12,12 +13,12 @@ interface FilterProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 const Filter: React.FC<FilterProps> = ({
-  children,
   variant,
+  children,
   isActive,
   ...rest
 }) => {
-  const variantType = mapVariant(variant)
+  const variantType = notificationService.getVariantTheme(variant)
 
   return (
     <button

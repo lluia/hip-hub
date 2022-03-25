@@ -1,5 +1,5 @@
 Cypress.Commands.add('visitLoggedIn', () => {
-  cy.route2('/api/user', { fixture: 'user.json' }).visit('/')
+  cy.route2('/api//api/auth/session', { fixture: 'session.json' }).visit('/')
 })
 
 Cypress.Commands.add('getNotificationLabel', (label) => {

@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { useRouter } from 'next/router'
 import formatRelative from 'date-fns/formatRelative'
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
-import { AssociationLabel } from '../../modules/design-system'
 import {
   Author,
   Box,
@@ -11,14 +9,17 @@ import {
   Emoji,
   Loading,
   PageWrap,
-} from '../../modules/design-system'
-import { useFetchNotification } from '../../queries/useFetchNotification'
-import { MetaBlock } from '../../modules/design-system/MetaBlock/MetaBlock'
+  AssociationLabel,
+  MetaBlock,
+} from '../../components'
+import { useFetchNotification } from '../../queries/notifications'
 
-export default function Story() {
-  const router = useRouter()
-  const { data } = useFetchNotification(router.query.id as string)
+interface Props {
+  issueId: string
+}
 
+export function IssueScene({ issueId }: Props) {
+  const { data } = useFetchNotification(issueId)
   const retrievedDate = data?.created_at ? parseISO(data?.created_at) : ''
 
   const creationDate = retrievedDate

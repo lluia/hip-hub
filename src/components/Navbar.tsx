@@ -2,22 +2,19 @@ import * as React from 'react'
 import Link from 'next/link'
 import { Logo, Button, Back } from '.'
 import { useRouter } from 'next/router'
-
-interface NavbarUser {
-  avatar: string
-  name: string
-}
-
-interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: NavbarUser | null
-  loading: boolean
-}
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const size = '64px'
 
-export function Navbar({ user, loading }: NavbarProps) {
+export function Navbar() {
+  const { data, status: sessionStatus } = useSession({ required: false })
   const { pathname } = useRouter()
   const isRootPath = pathname === '/'
+  const { user } = data || {}
+
+  // React.useEffect(() => {
+  //   signOut()
+  // }, [])
 
   return (
     <nav
@@ -32,26 +29,31 @@ export function Navbar({ user, loading }: NavbarProps) {
         </Link>
       </div>
       <div className="flex justify-between items-center">
-        {loading ? null : user ? (
+        {sessionStatus === 'loading' ? null : user ? (
           <>
             <div className="flex items-center mr-5">
-              <img
-                src={user.avatar}
-                alt="user avatar"
-                className="rounded-full w-6"
-              />
+              {user.image ? (
+                <img
+                  src={user.image}
+                  alt="user avatar"
+                  className="rounded-full w-6"
+                />
+              ) : null}
               <span className="inline-block ml-3 text-sm font-italic">
                 <strong>{user.name}</strong>
               </span>
             </div>
-            <Link href="/api/sign-out">
-              <Button size="s">Sign-out</Button>
-            </Link>
+            <Button
+              size="s"
+              onClick={() => {
+                signOut()
+              }}
+            >
+              Sign-out
+            </Button>
           </>
         ) : (
-          <Link href="/api/sign-in">
-            <Button>Sign-in</Button>
-          </Link>
+          <Button onClick={() => signIn('github')}>Sign-in</Button>
         )}
       </div>
     </nav>
